@@ -1,0 +1,6 @@
+$(()=>{
+
+
+
+
+}) //end window onload
