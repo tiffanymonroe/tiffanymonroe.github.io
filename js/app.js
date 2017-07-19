@@ -3,23 +3,33 @@ $(()=>{
 //global scope
 const categories = ['Disney', 'Harry Potter', 'Lord of the Rings', 'Star Trek', 'Star Wars', 'Buffyverse', 'Superheroes'];
 
-
-
-const getName = ()=>{
-  $('input').on('keypress', (e)=>{
-  console.log('the key had been pressed');
-  $('button').on('click', ()=>{
-  $name = $(e.currentTarget).val();
-  $('.name').append($name).text($name);
-  })
+$('button').on('click', ()=>{
+  $('.row-2').css('display', 'flex')
 })
-}
-//local scope
 
+//local scope
+const game = {
+  players: [],
+  rounds: 0,
+  score: 0,
+  getName(){
+      $('input').on('keypress', (e)=>{
+      console.log('the key had been pressed');
+      $('button').on('click', ()=>{
+      $player1 = $('#player1 input').val();
+      $('#player1-info').append('<div>').text($player1);
+      })
+  })
+  }
+
+}
+
+game.getName();
+console.log(game.players);
 
 class Player {
   constructor (name, score, roundsWon) {
-    this.name = getName();
+    this.name = '';
     this.score = 0;
     this.roundsWon = 0;
   }
@@ -31,9 +41,7 @@ console.log(player1);
 let player2 = new Player;
 console.log(player2);
 
-$('button').on('click', ()=>{
-  $('.row-2').css('display', 'flex')
-})
+
 
 
 
