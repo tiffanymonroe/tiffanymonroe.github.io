@@ -20,35 +20,39 @@
   </head>
   <body>
     <div class="container">
-      <h1>Fandom Trivia</h1>
-      <div id="gameboard">
-        <header class="menu">
-          <h2 id="categories">Categories</h2>
-        </header>
-        <div id='robot'>
-          <!-- <img src="img/robot.png"> -->
-        </div>
-      <div class="scoreboard">
-        <section id="player1">
-          <h3>Player 1: </h3>
-          <input>enter your name</input>
-          <button>submit</button>
-        </section>
-        <section id="player2">
-          <h3>Player 2: </h3>
-          <input>enter your name</input>
-          <button>submit</button>
-        </section>
+      <div class="row-1">
+        <h1>Fandom Trivia</h1>
       </div>
-      <div class="modal">
-        <section>
+      <div class="row-2">
+          <h2>Categories:</h2>
+          <ul id="categories">
+            <li>category</li>
+            <li>category</li>
+            <li>category</li>
+            <li>category</li>
+            <li>category</li>
+          </ul>
+      </div>
+
+      <div class="row-3" id="modal">
           <h2 id="category"></h2>
           <h3>Question:</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           <h3>Answer:</h3>
-          
+
           <img src="img/robot.png">
-        </section>
+      </div>
+      <div class="row-4">
+        <div id="player1">
+          <h3>Player 1: </h3>
+          <input><p>enter your name</p></input>
+          <button>submit</button>
+        </div>
+        <div id="player2">
+          <h3>Player 2: </h3>
+          <input><p>enter your name</p></input>
+          <button>submit</button>
+        </div>
       </div>
     </div>
   </body>

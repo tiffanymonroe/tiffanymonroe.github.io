@@ -7,4 +7,5 @@ const $categories = ['Disney', 'Harry Potter', 'Lord of the Rings', 'Star Trek',
 //local scope
 
 
+
 }) //end window onload
