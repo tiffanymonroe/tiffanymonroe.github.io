@@ -73,7 +73,7 @@ $('button').on('click', ()=>{
 $randomNames = $categories[Math.floor(Math.random() * $categories.length)];
 console.log($randomNames);
 
-for (let i=1; i <= 3; i++){
+for (let i=0; i <= 5; i++){
   $addCategories= $('<li>').text($categories[i]);
   $addCategories.appendTo('ul');
 }
