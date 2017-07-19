@@ -1,19 +1,6 @@
 $(()=>{
+const $categories = [];
 
-//global scope
-const categories = ['Disney', 'Harry Potter', 'Lord of the Rings', 'Star Trek', 'Star Wars', 'Buffyverse', 'Superheroes'];
-
-$('button').on('click', ()=>{
-  $('.row-2').css('display', 'flex')
-})
-
-
-//local scope
-const game = {
-  players: [],
-  rounds: 0,
-  score: 0
-}
 
 
 //Categories //
@@ -34,10 +21,14 @@ class Category {
   setAnswer(newAnswer){
     this.answers = this.answers.push(newAnswer);
   }
+  pushName(){
+      $categories.push(this.name);
+  }
   // setCorrectAnswer(){
   //   if statement
   // }
 }
+
 
 //*****************************************//
 const disney = new Category ('Disney');
@@ -45,6 +36,7 @@ const disney = new Category ('Disney');
 disney.setQuestion('What date did Disneyland open?');
 disney.setAnswer('July 17, 1955');
 disney.setChoices('December 5, 1950', 'July 17, 1955', 'June 11, 1955');
+disney.pushName();
 
 //
 console.log(disney);
@@ -55,6 +47,7 @@ const buffyverse = new Category ('Buffyverse');
 buffyverse.setQuestion("What dimension is Lorne from");
 buffyverse.setAnswer("Pylea");
 buffyverse.setChoices("Oden-Tal", "Arashmaharr", "Pylea");
+buffyverse.pushName();
 //
 
 console.log(buffyverse);
@@ -64,8 +57,25 @@ console.log(buffyverse);
 const starwars = new Category ('Star Wars');
 starwars.setQuestion("What is the title of Darth Vader's theme music?");
 starwars.setAnswer("The Imperial March");
-starwars.setChoices("The Imperial March", "The Empire", "Darth Vader Theme Music");
+starwars.setChoices("The Imperial March", "The Empire", "Darth Vader Theme");
+starwars.pushName();
+console.log(starwars);
 
+//*****************************************//
+
+
+$('button').on('click', ()=>{
+  $('.row-2').css('display', 'flex')
+})
+
+const game = {
+  players: [],
+  rounds: 0,
+  score: 0,
+}
+
+
+console.log($categories);
 
 // leave until last
 // getName = ()=>{
