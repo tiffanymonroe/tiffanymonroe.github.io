@@ -80,7 +80,7 @@ img {
   align-items: flex-end;
 }
 
-#player1 {
+.player1 {
   width: 25%;
   height: 10em;
   align-self: center;
@@ -91,7 +91,7 @@ img {
   padding: 1%;
 }
 
-#player2 {
+.player2 {
   width: 25%;
   height: 10em;
   align-self:center;

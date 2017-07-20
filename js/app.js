@@ -43,15 +43,12 @@ $(()=>{
 
 
 
-  //*****************************************//
+//*****************************************//
 
-//Categories
-
-
-
-
+// Categories
 
 //*****************************************//
+
 const disney = {
   name: "Disney",
   questions: ['What date did Disneyland open?'],
@@ -103,7 +100,7 @@ console.log(superheroes);
 
 //*****************************************//
 
-const $categories = [];
+const $categories = [disney.name, superheroes.name, buffyverse.name, starwars.name];
 for (let i=0; i < $categories.length; i++){
   // let $randomCategory = $categories[Math.floor(Math.random() * $categories.length)];
   $addCategories = $('<li/>').text($categories[i]).attr('value', "" + $categories[i] + "");
@@ -135,12 +132,12 @@ createModal("<p>Welcome to Fandom Trivia! Let's get started. Enter your names in
 //*****************************************//
 // leave until last
 getChoice = ()=>{
-    $('input').on('click', ()=>{
       $('button').on('click', ()=>{
-        $player1 = $('#player1 input').val();
-        $player2 = $('#player2 input').val();
+        let $player1 = $('#player1-input').val();
+        console.log($player1);
+        let $player2 = $('#player2-input').val();
+        console.log($player1);
     })
-})
 }
 
 getChoice();
