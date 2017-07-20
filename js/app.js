@@ -1,180 +1,149 @@
 $(()=>{
 
   //Modal setup// give credit to Alex in ReadMe.
+  let $container = $('<div>')
   let $mdl = $('<p>')
   let $action = $('<button>').attr('id', 'modal-button')
 
 
   const createModal = (message, button) => {
 
-    $mdl.text(message)
-    $mdl.css('border-radius', '3%')
+    $mdl.html(message)
+    $mdl.css('border-radius', '1%')
     $mdl.css('position', 'absolute')
     $mdl.css('zIndex', '1')
     $mdl.css('width', '50%')
     $mdl.css('height', '20em')
     $mdl.css('padding', '5%')
-    $mdl.css('margin', '30% 50%')
+    $mdl.css('margin', '0 25%')
     $mdl.css('font-family', "'Roboto', sans-serif")
-    $mdl.css('border', '1px solid black')
+    $mdl.css('border', '1px solid lightgrey')
+    $mdl.css('box-shadow', '5px 5px 15px #888888')
+
 
     $action.text(button)
     $action.css('margin-top', '15%')
-    $action.css('width', '20%')
-    $action.css('height', '15%')
+    $action.css('padding', '1em')
     $action.css('position', 'absolute')
     $action.css('top', '60%')
-    $action.css('left', '40%')
+    $action.css('left', '50%')
 
-    $('.row-3').append($mdl)
+
+    $('.row-3').append($container)
+    $container.append($mdl)
     $mdl.append($action)
   }
 
 
-  createModal('Testing message', 'button says what?');
+
+
+
+
+
 
 
 
   //*****************************************//
 
-  $('#start').on('click', ()=>{
-    $('.row-2').css('display', 'flex')
-  })
+//Categories
 
 
-  //modal notes
-
-  // $modalOn = ()=> {$('#modal').css('display', 'flex')}
-  // $modalOn();
-
-  //*****************************************//
-
-//Categories //
-
-const $categories = [];
-
-class Category {
-  constructor(name, questions, choices, answers){
-    this.name = name;
-    this.questions = [];
-    this.choices = [];
-    this.answers = [];
-  }
-  setQuestion(newQuestion){
-    this.questions = this.questions.push(newQuestion);
-  }
-  setChoices(newChoices){
-    this.choices = this.choices.push(newChoices);
-  }
-  setAnswer(newAnswer){
-    this.answers = this.answers.push(newAnswer);
-  }
-  pushName(){
-      $categories.push(this.name);
-  }
-
-  // setCorrectAnswer(){
-  //   if statement
-  // }
-}
 
 
 
 //*****************************************//
-const disney = new Category ('Disney');
-//question 1
-disney.setQuestion('What date did Disneyland open?');
-disney.setAnswer('July 17, 1955');
-disney.setChoices('December 5, 1950', 'July 17, 1955', 'June 11, 1955');
-disney.pushName();
+const disney = {
+  name: "Disney",
+  questions: ['What date did Disneyland open?'],
+  choices: [['December 5, 1950', 'July 17, 1955', 'June 11, 1955']
+            ],
+  answers: ['July 17, 1955']
+}
 
-
-//
 console.log(disney);
 
 //*****************************************//
 
-const buffyverse = new Category ('Buffyverse');
-//question 1
-buffyverse.setQuestion("What dimension is Lorne from?");
-buffyverse.setAnswer("Pylea");
-buffyverse.setChoices("Oden-Tal", "Arashmaharr", "Pylea");
-buffyverse.pushName();
-//
+const buffyverse = {
+  name: 'Buffyverse',
+  questions: ["What dimension is Lorne from?"],
+  choices: [["Oden-Tal", "Arashmaharr", "Pylea"]
+            ],
+  answers: ["Pylea"]
+
+}
+
 console.log(buffyverse);
 
 //*****************************************//
 
-const starwars = new Category ('Star Wars');
-starwars.setQuestion("What is the title of Darth Vader's theme music?");
-starwars.setAnswer("The Imperial March");
-starwars.setChoices("The Imperial March", "The Empire", "Darth Vader Theme");
-starwars.pushName();
-//
+const starwars = {
+  name: 'Star Wars',
+  question: ["What is the title of Darth Vader's theme music?"],
+  choices: [["The Imperial March", "The Empire", "Darth Vader Theme"]
+            ],
+  answers: ["The Imperial March"]
+
+}
+
 console.log(starwars);
 
 //*****************************************//
 
-const superheroes = new Category ('Superheroes')
-superheroes.setQuestion("What is the longest running Superman TV series?");
-superheroes.setAnswer("Smallville");
-superheroes.setChoices("Adventures of Superman","Lois and Clark: The New Adventures of Superman",  "Smallville");
-superheroes.pushName();
-//
+const superheroes = {
+  name: 'Superheroes',
+  questions: ["What is the longest running Superman TV series?"],
+  choices: [["Adventures of Superman","Lois and Clark: The New Adventures of Superman",  "Smallville"]
+            ],
+  answers: ["Smallville"]
+
+}
+
 console.log(superheroes);
 
 //*****************************************//
 
+const $categories = [];
+for (let i=0; i < $categories.length; i++){
+  // let $randomCategory = $categories[Math.floor(Math.random() * $categories.length)];
+  $addCategories = $('<li/>').text($categories[i]).attr('value', "" + $categories[i] + "");
+  $addCategories.appendTo('ul');
+}
 
+//*****************************************//
 
+$('#start').on('click', ()=>{
+  $('.row-2').css('display', 'flex')
+})
 
 
 //*****************************************//
-let category = $('li').on('click');
-console.log(category);
+
 
 
 const game = {
   players: [],
   rounds: 0,
   score: 0,
-  play(category){
-
-  }
 
 }
 
-//*****************************************//
-
-//Randomize categories
-
-//refactor to not repeat
-
-  for (let i=0; i < $categories.length; i++){
-    // let $randomCategory = $categories[Math.floor(Math.random() * $categories.length)];
-    $addCategories = $('<li>').text($categories[i]).addClass("" + $categories[i] + "");
-    $addCategories.appendTo('ul');
-  }
+createModal("<p>Welcome to Fandom Trivia! Let's get started. Enter your names in the boxes below.</p>", 'close');
 
 
 
 //*****************************************//
-
-
 // leave until last
-// getName = ()=>{
-//     $('input').on('click', ()=>{
-//       $('button').on('click', ()=>{
-//         $player1 = $('#player1 input').val();
-//         $player2 = $('#player2 input').val();
-//         game.players.push($player1, $player2);
-//         $('#player1-info').append('<div>')
-//         $('#player2-info').append('<div>')
-//     })
-// })
-// }
-//
-// getName();
+getChoice = ()=>{
+    $('input').on('click', ()=>{
+      $('button').on('click', ()=>{
+        $player1 = $('#player1 input').val();
+        $player2 = $('#player2 input').val();
+    })
+})
+}
+
+getChoice();
 //
 // console.log(game.players);
 
