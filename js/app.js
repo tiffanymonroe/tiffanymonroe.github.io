@@ -63,21 +63,28 @@ console.log(starwars);
 
 //*****************************************//
 
+const superheroes = new Category ('Superheroes')
+superheroes.setQuestion("What is the longest running Superman TV series?");
+superheroes.setAnswer("Smallville");
+superheroes.setChoices("Adventures of Superman","Lois and Clark: The New Adventures of Superman",  "Smallville");
+superheroes.pushName();
+console.log(superheroes);
 
+
+//*****************************************//
 $('button').on('click', ()=>{
   $('.row-2').css('display', 'flex')
 })
 
 //Randomize categories
 
-$randomNames = $categories[Math.floor(Math.random() * $categories.length)];
-console.log($randomNames);
+//refactor to not repeat
 
-for (let i=0; i <= 5; i++){
-  $addCategories= $('<li>').text($categories[i]);
-  $addCategories.appendTo('ul');
-}
-
+  for (let i=0; i < $categories.length; i++){
+    // let $randomCategory = $categories[Math.floor(Math.random() * $categories.length)];
+    $addCategories = $('<li>').html('<a href="#">' + $categories[i] + '</a>');
+    $addCategories.appendTo('ul');
+  }
 
 
 
@@ -87,8 +94,15 @@ const game = {
   players: [],
   rounds: 0,
   score: 0,
+  chooseCategory(){
+    $('a').on('click', (e)=>{
+      // (e.currentTarget)
+      console.log('the link has been clicked');
+    })
+  }
 }
 
+console.log(game.chooseCategory());
 
 console.log($categories);
 

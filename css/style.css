@@ -51,6 +51,16 @@ h1, h2, h3 {
   font-family: 'Slackey', cursive;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  font-family: 'Slackey', cursive;
+}
+
+
 #start {
   display: flex;
   font-family: 'Roboto', sans-serif;
