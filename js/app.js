@@ -1,4 +1,6 @@
 $(()=>{
+ //Modal//
+  
   $modalHide = ()=> {
     $('#modal').hide();
   }
@@ -6,11 +8,12 @@ $(()=>{
 
 
 
-  const $categories = [];
-
+ 
 
 
 //Categories //
+
+const $categories = [];
 
 class Category {
   constructor(name, questions, choices, answers){
@@ -60,23 +63,24 @@ disney.pushName();
 console.log(disney);
 
 //*****************************************//
+  
 const buffyverse = new Category ('Buffyverse');
 //question 1
-buffyverse.setQuestion("What dimension is Lorne from");
+buffyverse.setQuestion("What dimension is Lorne from?");
 buffyverse.setAnswer("Pylea");
 buffyverse.setChoices("Oden-Tal", "Arashmaharr", "Pylea");
 buffyverse.pushName();
 //
-
 console.log(buffyverse);
 
-
 //*****************************************//
+  
 const starwars = new Category ('Star Wars');
 starwars.setQuestion("What is the title of Darth Vader's theme music?");
 starwars.setAnswer("The Imperial March");
 starwars.setChoices("The Imperial March", "The Empire", "Darth Vader Theme");
 starwars.pushName();
+//
 console.log(starwars);
 
 //*****************************************//
@@ -86,10 +90,12 @@ superheroes.setQuestion("What is the longest running Superman TV series?");
 superheroes.setAnswer("Smallville");
 superheroes.setChoices("Adventures of Superman","Lois and Clark: The New Adventures of Superman",  "Smallville");
 superheroes.pushName();
+//
 console.log(superheroes);
 
-
 //*****************************************//
+  
+
 $('button').on('click', ()=>{
   $('.row-2').css('display', 'flex')
 })
@@ -107,7 +113,7 @@ $('button').on('click', ()=>{
 
 
 //*****************************************//
-
+//modal notes
 
 // $modalOn = ()=> {$('#modal').css('display', 'flex')}
 // $modalOn();
