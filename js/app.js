@@ -1,5 +1,12 @@
 $(()=>{
-const $categories = [];
+  $modalHide = ()=> {
+    $('#modal').hide();
+  }
+  $modalHide();
+
+
+
+  const $categories = [];
 
 
 
@@ -23,6 +30,17 @@ class Category {
   }
   pushName(){
       $categories.push(this.name);
+  }
+  modalText(){
+    $('#question').append(this.questions).html(this.questions);
+    $('#choice').append(this.choices).html(this.answers);
+    $('#answer').append(this.answers).css('display', 'none');
+  }
+  writeModal(){
+    $('a').on('click', (e)=>{
+      (e.currentTarget)
+        this.modelText();
+    })
   }
   // setCorrectAnswer(){
   //   if statement
@@ -82,7 +100,7 @@ $('button').on('click', ()=>{
 
   for (let i=0; i < $categories.length; i++){
     // let $randomCategory = $categories[Math.floor(Math.random() * $categories.length)];
-    $addCategories = $('<li>').html('<a href="#">' + $categories[i] + '</a>');
+    $addCategories = $('<li>').html('<a>' + $categories[i] + '</a>').addClass("" + $categories[i] + "");
     $addCategories.appendTo('ul');
   }
 
@@ -90,21 +108,19 @@ $('button').on('click', ()=>{
 
 //*****************************************//
 
+
+// $modalOn = ()=> {$('#modal').css('display', 'flex')}
+// $modalOn();
+
+//*****************************************//
+
 const game = {
   players: [],
   rounds: 0,
   score: 0,
-  chooseCategory(){
-    $('a').on('click', (e)=>{
-      // (e.currentTarget)
-      console.log('the link has been clicked');
-    })
-  }
+
 }
 
-console.log(game.chooseCategory());
-
-console.log($categories);
 
 // leave until last
 // getName = ()=>{
