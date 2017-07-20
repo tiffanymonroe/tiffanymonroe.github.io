@@ -2,7 +2,8 @@ $(()=>{
 
   //Modal setup// give credit to Alex in ReadMe.
   let $mdl = $('<p>')
-  let $action = $('<button>')
+  let $action = $('<button>').attr('id', 'modal-button')
+
 
   const createModal = (message, button) => {
 
@@ -13,14 +14,16 @@ $(()=>{
     $mdl.css('width', '50%')
     $mdl.css('height', '20em')
     $mdl.css('padding', '5%')
-    $mdl.css('margin-top', '15%')
+    $mdl.css('margin', '30% 50%')
+    $mdl.css('font-family', "'Roboto', sans-serif")
+    $mdl.css('border', '1px solid black')
 
     $action.text(button)
     $action.css('margin-top', '15%')
     $action.css('width', '20%')
     $action.css('height', '15%')
     $action.css('position', 'absolute')
-    $action.css('top', '50%')
+    $action.css('top', '60%')
     $action.css('left', '40%')
 
     $('.row-3').append($mdl)
@@ -34,7 +37,7 @@ $(()=>{
 
   //*****************************************//
 
-  $('button').on('click', ()=>{
+  $('#start').on('click', ()=>{
     $('.row-2').css('display', 'flex')
   })
 
@@ -74,6 +77,7 @@ class Category {
   //   if statement
   // }
 }
+
 
 
 //*****************************************//
@@ -122,31 +126,21 @@ console.log(superheroes);
 //*****************************************//
 
 
-$('button').on('click', ()=>{
-  $('.row-2').css('display', 'flex')
-})
+
 
 
 //*****************************************//
+let category = $('li').on('click');
+console.log(category);
 
-//Randomize categories
-
-//refactor to not repeat
-
-  for (let i=0; i < $categories.length; i++){
-    // let $randomCategory = $categories[Math.floor(Math.random() * $categories.length)];
-    $addCategories = $('<li>').html('<a>' + $categories[i] + '</a>').addClass("" + $categories[i] + "");
-    $addCategories.appendTo('ul');
-  }
-
-
-
-  //*****************************************//
 
 const game = {
   players: [],
   rounds: 0,
   score: 0,
+  play(category){
+
+  }
 
 }
 
@@ -158,7 +152,7 @@ const game = {
 
   for (let i=0; i < $categories.length; i++){
     // let $randomCategory = $categories[Math.floor(Math.random() * $categories.length)];
-    $addCategories = $('<li>').html('<a>' + $categories[i] + '</a>').addClass("" + $categories[i] + "");
+    $addCategories = $('<li>').text($categories[i]).addClass("" + $categories[i] + "");
     $addCategories.appendTo('ul');
   }
 
