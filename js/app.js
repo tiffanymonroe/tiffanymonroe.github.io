@@ -175,15 +175,19 @@ const namePlayers = () => {
 
 $('#start').on('click', ()=>{
   $('.row-2').css('display', 'flex')
+  $('#start').hide();
 })
 
 
 const askQuestion = () => {
+    $('li').on('click', (e) => {
+        let $category = $(e.currentTarget).val();
+        console.log($category);
+     })
 
-  
 }
 
 console.log($categories);
-
+askQuestion();
 
 }) //end window onload
