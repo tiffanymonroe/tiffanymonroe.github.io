@@ -1,6 +1,7 @@
 $(()=>{
 
-  //Modal setup// give credit to Alex in ReadMe.
+//Modal setup// give credit to Alex in ReadMe.
+
   let $container = $('<div>')
   let $mdl = $('<p>')
   let $action = $('<button>').attr('id', 'modal-button')
@@ -38,14 +39,8 @@ $(()=>{
 
 
 
-
-
-
-
-
-//*****************************************//
-
 // Categories
+
 
 //*****************************************//
 
@@ -107,6 +102,75 @@ for (let i=0; i < $categories.length; i++){
   $addCategories.appendTo('ul');
 }
 
+
+//Player input
+
+
+const getPlayer1 = () => {
+  $('.player1 button').on('click', () => {
+        let $player1 = $('.player1 input').val();
+        console.log($player1);
+        game.players.push($player1);
+      })
+};
+
+const getPlayer2 = () => {
+  $('.player2 button').on('click', () => {
+        let $player2 = $('.player2 input').val();
+        console.log($player2);
+        game.players.push($player2);
+      })
+};
+
+
+
+
+//*****************************************//
+
+//Game object
+
+const game = {
+  players: [],
+  rounds: 0,
+  score: 0,
+  awardPoints(answer){
+    if (answer === true){
+      score++;
+    }
+      else {
+          createModal ('Sorry, maybe next time.', 'next question')
+          // $('#modal-button').on('click', ()=>{
+          //   newQuestion();
+          // })
+        }
+  },
+  checkWinner (score) {
+      if (score > 0){
+        console.log('end round 1');
+        createModal ('You won!', 'Round 2')
+      //   $('#modal-button').on('click', ()=>{
+      //         if (score)
+      //
+      //   })
+      // }
+  }
+  }
+
+}
+
+
+
+
+//*****************************************//
+
+const namePlayers = () => {
+  getPlayer1();
+  getPlayer2();
+  $('.player1 h3').text('Player 1: ' + game.players[0]);
+  $('.player2 h3').text('Player 2: ' + game.players[1]);
+}
+
+
 //*****************************************//
 
 $('#start').on('click', ()=>{
@@ -114,35 +178,12 @@ $('#start').on('click', ()=>{
 })
 
 
-//*****************************************//
+const askQuestion = () => {
 
-
-
-const game = {
-  players: [],
-  rounds: 0,
-  score: 0,
-
+  
 }
 
-createModal("<p>Welcome to Fandom Trivia! Let's get started. Enter your names in the boxes below.</p>", 'close');
-
-
-
-//*****************************************//
-// leave until last
-getChoice = ()=>{
-      $('button').on('click', ()=>{
-        let $player1 = $('#player1-input').val();
-        console.log($player1);
-        let $player2 = $('#player2-input').val();
-        console.log($player1);
-    })
-}
-
-getChoice();
-//
-// console.log(game.players);
+console.log($categories);
 
 
 }) //end window onload
