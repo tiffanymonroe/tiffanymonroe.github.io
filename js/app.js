@@ -95,7 +95,18 @@ console.log(superheroes);
 
 //*****************************************//
 
-const $categories = [disney.name, superheroes.name, buffyverse.name, starwars.name];
+const harrypotter = {
+  name: 'Harry Potter',
+  questions: [],
+  choices: [],
+  answers: []
+}
+
+console.log(harrypotter);
+
+//*****************************************//
+
+const $categories = [disney.name, superheroes.name, buffyverse.name, starwars.name, harrypotter.name];
 for (let i=0; i < $categories.length; i++){
   // let $randomCategory = $categories[Math.floor(Math.random() * $categories.length)];
   $addCategories = $('<button/>').text($categories[i]).attr('value', "" + $categories[i] + "");

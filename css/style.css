@@ -12,7 +12,7 @@ body {
 
 .row-1 {
   width: 90%;
-  height: 15vh;
+  height: 15%;
   display: inline-block;
   margin: 0 auto;
   text-align: center;
@@ -21,15 +21,14 @@ body {
 
 .row-2 {
   width: 90%;
-  height: 10vh;
+  height: 15vh;
   display: none;
   margin: 0 auto;
   margin-top: 3%;
   align-self: center;
   align-items: center;
+  vertical-align: top;
   justify-content: space-around;
-  flex-wrap: wrap;
-
 }
 
 .row-3 {
@@ -54,7 +53,7 @@ h1, h2, h3 {
 
 #start {
   display: inline-block;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Cabin', sans-serif;
   font-weight: bold;
   font-size: 1em;
   text-transform: uppercase;
@@ -65,17 +64,20 @@ h1, h2, h3 {
 }
 
 #categories {
-  width: 50%;
+  width: 80%;
 }
 #categories button {
-  height: 10vh;
-  width: 10vw;
   font-family: 'Slackey', cursive;
-  font-size: 1em;
+  font-size: 100%;
+  padding: .5%;
+  height: 12vh;
+  width: 12vw;
   margin: 1%;
-
+  flex-wrap: wrap;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: space-around;
 }
-
 
 img {
   width: 30%;
@@ -90,7 +92,7 @@ img {
   align-self: center;
   justify-content: flex-start;
   display: inline-block;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Cabin', sans-serif;
   border: 1px solid black;
   padding: 1%;
 }
@@ -102,7 +104,7 @@ img {
   justify-content: flex-end;
   display: inline-block;
   margin-left: 60%;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Cabin', sans-serif;
   border: 1px solid black;
   padding: 1%;
 }
@@ -110,7 +112,35 @@ img {
 input {
   width: 20em;
   height: 2em;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Cabin', sans-serif;
   font-size: 1em;
   text-align: center;
+}
+
+
+/* Media Queries */
+
+@media (max-width: 860px){
+  #categories button {
+    font-family: 'Cabin', sans-serif;
+    height: auto;
+    width: auto;
+  }
+
+  h2  {
+    font-family: 'Cabin', sans-serif;
+    font-size: 1em;
+  }
+
+  .row-1 {
+    font-size: 1em;
+    height: 10%;
+  }
+}
+
+@media (max-width: 1170px){
+  #categories button{
+    font-family: 'Cabin', sans-serif;
+    font-weight: bold;
+  }
 }
