@@ -186,7 +186,7 @@ const askQuestion = () => {
      })
 
 }
-
+ 
 console.log($categories);
 askQuestion();
 
