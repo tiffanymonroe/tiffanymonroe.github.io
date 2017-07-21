@@ -1,5 +1,6 @@
 body {
-
+  background-image: url('../img/StarburstsMCM.png');
+  background-size: cover;
 }
 
 .container {
@@ -7,6 +8,7 @@ body {
   flex-wrap: wrap;
   width: 100%;
   height: auto;
+
 }
 
 .row-1 {
@@ -28,6 +30,8 @@ body {
   align-items: center;
   vertical-align: top;
   justify-content: space-around;
+  background-color: white;
+  border: 2px solid black;
 }
 
 .row-3 {
@@ -72,17 +76,16 @@ h1, h2, h3 {
   height: 12vh;
   width: 12vw;
   margin: 1%;
-  flex-wrap: wrap;;
+  flex-wrap: wrap;
   text-align: center;
   vertical-align: middle;
   justify-content: space-around;
+  background-color: white;
 }
 
-img {
-  width: 30%;
-  height: auto;
-  display: inline-block;
-  align-items: center;
+button:hover {
+  background-image: url('../img/button_background.png');
+  color: white;
 }
 
 .player1 {
@@ -94,6 +97,7 @@ img {
   font-family: 'Cabin', sans-serif;
   border: 1px solid black;
   padding: 1%;
+  background-color: white;
 }
 
 .player2 {
@@ -106,6 +110,7 @@ img {
   font-family: 'Cabin', sans-serif;
   border: 1px solid black;
   padding: 1%;
+  background-color: white;
 }
 
 input {
