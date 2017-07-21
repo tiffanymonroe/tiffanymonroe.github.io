@@ -98,8 +98,8 @@ console.log(superheroes);
 const $categories = [disney.name, superheroes.name, buffyverse.name, starwars.name];
 for (let i=0; i < $categories.length; i++){
   // let $randomCategory = $categories[Math.floor(Math.random() * $categories.length)];
-  $addCategories = $('<li/>').text($categories[i]).attr('value', "" + $categories[i] + "");
-  $addCategories.appendTo('ul');
+  $addCategories = $('<button/>').text($categories[i]).attr('value', "" + $categories[i] + "");
+  $addCategories.appendTo('#categories');
 }
 
 
@@ -180,7 +180,7 @@ $('#start').on('click', ()=>{
 
 
 const askQuestion = () => {
-    $('li').on('click', (e) => {
+    $('#categories button').on('click', (e) => {
         let $category = $(e.currentTarget).val();
         console.log($category);
      })

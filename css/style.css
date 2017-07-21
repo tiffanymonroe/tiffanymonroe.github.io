@@ -65,13 +65,14 @@ h1, h2, h3 {
 }
 
 #categories {
-  display: flex;
-  list-style: none;
-  justify-content: space-around;
-  align-items: center;
+  width: 50%;
+}
+#categories button {
   height: 10vh;
-  width: 60%;
+  width: 10vw;
   font-family: 'Slackey', cursive;
+  font-size: 1em;
+  margin: 1%;
 
 }
 
