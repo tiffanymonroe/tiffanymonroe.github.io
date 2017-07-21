@@ -5,7 +5,7 @@ $(()=>{
   let $container = $('<div>')
   let $mdl = $('<p>')
   let $choicesContainer = $('<div>')
-  let $choices = $('<p>')
+  let $choices = $('<button>')
 
 
 
@@ -48,11 +48,11 @@ $(()=>{
 
 const disney = {
   name: "Disney",
-  questions: ['What date did Disneyland open?'],
-  choices: [['December 5, 1950 <br>', 'July 17, 1955 <br>', ' June 11, 1955']
-            ],
-  answers: ['July 17, 1955']
-}
+      questions: ['What date did Disneyland open?'],
+      choices: [['December 5, 1950 </p>', '<p>July 17, 1955</p> ', '<p>June 11, 1955</p>']
+                ],
+      answers: [1]
+    }
 
 console.log(disney);
 
@@ -119,8 +119,43 @@ for (let i=0; i < $categories.length; i++){
 
 
 //*****************************************//
+const getChoice = () => {
+    if ($category == $categories[0]){
+      for (let i=0; i < $categories[0].choices[0].length; i++){
+        $choices = $categories[0].choices[0][i];
+    }}
+      else if ($category == $categories[1]) {
+          for (let i=0; i < $categories[1].answers[0].length; i++){
+            $choices = $categories[1].answers[0][i];
+          }
+      }   else if ($category == $categories[2]) {
+              for (let i=0; i < $categories[2].answers[0].length; i++){
+                $choices = $categories[2].answers[0][i];
+          } }  else if ($category == $categories[3]) {
+                  for (let i=0; i < $categories[3].answers[0].length; i++){
+                    $choices = $categories[3].answers[0][i];
+                  } }  else if ($category == $categories[4]) {
+                          for (let i=0; i < $categories[4].answers[0].length; i++){
+                            $choices = $categories[4].answers[0][i];
+                          } }  else {
+                                  console.log("Oops! You don't have any choices.");
+                              }
+}
 
 
+
+getChoice();
+
+//*****************************************//
+const getAnswer = () => {
+  $choices.on('click', (e) => {
+    let $answer = $(e.currentTarget).val();
+      if ($answer == disney.answer[0]){
+        console.log('that is the correct Disney answer.');
+      }
+
+  })
+}
 
 //*****************************************//
 //Player input
@@ -174,16 +209,14 @@ const game = {
                          } else {
                               console.log('Oops! Something went wrong.');
                            }
-
        })
-
   },
   awardPoints(answer){
     if (answer === true){
       score++;
     }
       else {
-          createModal ('Sorry, maybe next time.', 'next question')
+          createModal ('Sorry, maybe next time.')
           // $('#modal-button').on('click', ()=>{
           //   newQuestion();
           // })
