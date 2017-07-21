@@ -13,22 +13,20 @@ $(()=>{
     $mdl.css('border-radius', '1%')
     $mdl.css('position', 'absolute')
     $mdl.css('zIndex', '1')
-    $mdl.css('width', '50%')
-    $mdl.css('height', '20em')
+    $mdl.css('width', '25%')
+    $mdl.css('height', 'auto')
     $mdl.css('padding', '5%')
     $mdl.css('margin', '0 25%')
     $mdl.css('font-family', "'Roboto', sans-serif")
     $mdl.css('border', '1px solid lightgrey')
     $mdl.css('box-shadow', '5px 5px 15px #888888')
 
-
-    $action.text(button)
+    $action.html(button)
     $action.css('margin-top', '15%')
     $action.css('padding', '1em')
     $action.css('position', 'absolute')
     $action.css('top', '60%')
     $action.css('left', '50%')
-
 
     $('.row-3').append($container)
     $container.append($mdl)
@@ -47,7 +45,7 @@ $(()=>{
 const disney = {
   name: "Disney",
   questions: ['What date did Disneyland open?'],
-  choices: [['December 5, 1950', 'July 17, 1955', 'June 11, 1955']
+  choices: [['December 5, 1950', ' July 17, 1955', ' June 11, 1955']
             ],
   answers: ['July 17, 1955']
 }
@@ -85,7 +83,7 @@ console.log(starwars);
 const superheroes = {
   name: 'Superheroes',
   questions: ["What is the longest running Superman TV series?"],
-  choices: [["Adventures of Superman","Lois and Clark: The New Adventures of Superman",  "Smallville"]
+  choices: [["Adventures of Superman ","Lois and Clark: The New Adventures of Superman ",  "Smallville"]
             ],
   answers: ["Smallville"]
 
@@ -112,6 +110,7 @@ for (let i=0; i < $categories.length; i++){
   $addCategories = $('<button/>').text($categories[i]).attr('value', "" + $categories[i] + "");
   $addCategories.appendTo('#categories');
 }
+
 
 
 //Player input
@@ -144,6 +143,24 @@ const game = {
   players: [],
   rounds: 0,
   score: 0,
+  askQuestion(){
+      $('#categories button').on('click', (e) => {
+          let $category = $(e.currentTarget).val();
+              if ($category == $categories[0]){
+                console.log('When you wish upon a star.');
+
+              } else if ($category == $categories[1]) {
+                    console.log('All the superheroes!');
+                }  else if ($category == $categories[2]) {
+                        console.log('Buffy is alive');
+                    }  else if ($category == $categories[3]) {
+                          console.log('A long time ago, in a galaxy far, far, away...');
+                       } else if ($category == $categories[4]) {
+                            console.log('The boy who lived.');
+                          }
+       })
+
+  },
   awardPoints(answer){
     if (answer === true){
       score++;
@@ -183,33 +200,19 @@ const namePlayers = () => {
 
 
 //*****************************************//
+const startGame = () => {
 
-$('#start').on('click', ()=>{
-  $('.row-2').css('display', 'flex')
-  $('#start').hide();
+  $('#start').on('click', ()=>{
+    $('.row-2').css('display', 'flex')
+    createModal("Choose a category.", 'close');
+    $('#modal-button').on('click', ()=>{
+        $mdl.hide();
+    });
+    $('#start').hide();
 })
-
-
-const askQuestion = () => {
-    $('#categories button').on('click', (e) => {
-        let $category = $(e.currentTarget).val();
-            if ($category == $categories[0]){
-              console.log('When you wish upon a star.');
-              
-            } else if ($category == $categories[1]) {
-                  console.log('All the superheroes!');
-              }  else if ($category == $categories[2]) {
-                      console.log('Buffy is alive');
-                  }  else if ($category == $categories[3]) {
-                        console.log('A long time ago, in a galaxy far, far, away...');
-                     } else if ($category == $categories[4]) {
-                          console.log('The boy who lived.');
-                        }
-     })
-
 }
-
+startGame();
 console.log($categories);
-askQuestion();
+game.askQuestion();
 
 }) //end window onload
