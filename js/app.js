@@ -23,7 +23,7 @@ $(()=>{
     $mdl.css('text-align', 'center')
 
     $action.html(button)
-    $action.css('margin-top', '15%')
+    $action.css('margin-top', '10%')
     $action.css('padding', '1em')
     $action.css('position', 'absolute')
     $action.css('top', '60%')
@@ -179,7 +179,7 @@ const game = {
                               $('#modal-button').on('click', ()=>{
                                 $mdl.hide();
                             })
-                          }
+                         }
        })
 
   },
@@ -226,15 +226,17 @@ const startGame = () => {
 
   $('#start').on('click', ()=>{
     $('.row-2').css('display', 'flex')
+
     createModal("Choose a category.", 'close');
     $('#modal-button').on('click', ()=>{
         $mdl.hide();
     });
+
     $('#start').hide();
 })
 }
+
 startGame();
-console.log($categories);
 game.askQuestion();
 
 }) //end window onload
