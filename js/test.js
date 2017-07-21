@@ -147,7 +147,6 @@ for (let i=0; i < $categories.length; i++){
 //Game object
 
 const game = {
-  players: [],
   rounds: 0,
   score: 0,
   askQuestion(){
@@ -199,6 +198,26 @@ const game = {
 }
 
 
+//Player input
+
+let players = [];
+
+const getPlayer1 = () => {
+  $('.player1 button').on('click', () => {
+        let $player1 = $('.player1 input').val();
+        console.log($player1);
+        players.push($player1);
+      })
+};
+
+const getPlayer2 = () => {
+  $('.player2 button').on('click', () => {
+        let $player2 = $('.player2 input').val();
+        console.log($player2);
+        players.push($player2);
+      })
+};
+
 
 
 //*****************************************//
@@ -206,9 +225,8 @@ const game = {
 const namePlayers = () => {
   getPlayer1();
   getPlayer2();
-  $('.player1 h3').text('Player 1: ' + game.players[0]);
-  $('.player2 h3').text('Player 2: ' + game.players[1]);
 }
+
 
 
 //*****************************************//
@@ -220,7 +238,10 @@ const startGame = () => {
     createModal("Choose a category.");
 
     $('#start').hide();
-})
+  })
+  namePlayers();
+  console.log(players);
+
 }
 
 startGame();
