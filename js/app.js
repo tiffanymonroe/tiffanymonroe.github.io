@@ -193,7 +193,18 @@ $('#start').on('click', ()=>{
 const askQuestion = () => {
     $('#categories button').on('click', (e) => {
         let $category = $(e.currentTarget).val();
-        console.log($category);
+            if ($category == $categories[0]){
+              console.log('When you wish upon a star.');
+              
+            } else if ($category == $categories[1]) {
+                  console.log('All the superheroes!');
+              }  else if ($category == $categories[2]) {
+                      console.log('Buffy is alive');
+                  }  else if ($category == $categories[3]) {
+                        console.log('A long time ago, in a galaxy far, far, away...');
+                     } else if ($category == $categories[4]) {
+                          console.log('The boy who lived.');
+                        }
      })
 
 }
