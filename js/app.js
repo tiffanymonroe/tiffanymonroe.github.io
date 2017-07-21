@@ -16,10 +16,11 @@ $(()=>{
     $mdl.css('width', '25%')
     $mdl.css('height', 'auto')
     $mdl.css('padding', '5%')
-    $mdl.css('margin', '0 25%')
+    $mdl.css('margin', '0 35%')
     $mdl.css('font-family', "'Roboto', sans-serif")
     $mdl.css('border', '1px solid lightgrey')
     $mdl.css('box-shadow', '5px 5px 15px #888888')
+    $mdl.css('text-align', 'center')
 
     $action.html(button)
     $action.css('margin-top', '15%')
@@ -69,7 +70,7 @@ console.log(buffyverse);
 
 const starwars = {
   name: 'Star Wars',
-  question: ["What is the title of Darth Vader's theme music?"],
+  questions: ["What is the title of Darth Vader's theme music?"],
   choices: [["The Imperial March", "The Empire", "Darth Vader Theme"]
             ],
   answers: ["The Imperial March"]
@@ -95,9 +96,11 @@ console.log(superheroes);
 
 const harrypotter = {
   name: 'Harry Potter',
-  questions: [],
-  choices: [],
-  answers: []
+  questions: ["What inspired J.K. Rowling to create dementors?"],
+  choices: [["Her battle with depression.", "Her belief in ghosts.",
+  "Her recurring nightmare."]
+      ],
+  answers: ["Her battle with depression"]
 }
 
 console.log(harrypotter);
@@ -148,15 +151,34 @@ const game = {
           let $category = $(e.currentTarget).val();
               if ($category == $categories[0]){
                 console.log('When you wish upon a star.');
-
+                createModal(disney.questions[0], 'choices');
+                  $('#modal-button').on('click', ()=>{
+                    $mdl.hide();
+                })
               } else if ($category == $categories[1]) {
                     console.log('All the superheroes!');
+                    createModal(superheroes.questions[0], 'choices');
+                      $('#modal-button').on('click', ()=>{
+                        $mdl.hide();
+                    })
                 }  else if ($category == $categories[2]) {
                         console.log('Buffy is alive');
+                        createModal(buffyverse.questions[0], 'choices');
+                          $('#modal-button').on('click', ()=>{
+                            $mdl.hide();
+                        })
                     }  else if ($category == $categories[3]) {
                           console.log('A long time ago, in a galaxy far, far, away...');
+                          createModal(starwars.questions[0], 'choices');
+                            $('#modal-button').on('click', ()=>{
+                              $mdl.hide();
+                          })
                        } else if ($category == $categories[4]) {
                             console.log('The boy who lived.');
+                            createModal(harrypotter.questions[0], 'choices');
+                              $('#modal-button').on('click', ()=>{
+                                $mdl.hide();
+                            })
                           }
        })
 
