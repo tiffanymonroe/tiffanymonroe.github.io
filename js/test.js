@@ -41,6 +41,8 @@ $(()=>{
 
   }
 
+
+
 //******************************************************
 
 
@@ -103,12 +105,16 @@ $(()=>{
   let player1 =
       $('.player1 button').on('click', () => {
             let player1 = $('.player1 input').val();
+            $('.player1 input').hide();
+            $('.player1 button').hide();
             console.log(player1);
       })
 
   let player2 =
       $('.player2 button').on('click', () => {
             let player2 = $('.player2 input').val();
+            $('.player2 input').hide();
+            $('.player2 button').hide();
             console.log(player2);
       })
 
@@ -117,19 +123,17 @@ $(()=>{
 
   const game = {
     currentPlayer: "",
+    currentCateogry: [],
     players: [player1, player2],
     round: 0,
     score: 0,
     switchPlayer(){
-      if (game.round === 0){
-        alert('Enter your names. Then, click "play."')
-        startGame();
-      }   else if (game.round % 2 === 0){
+      if (game.round % 2 === 0){
               player2 = game.currentPlayer
-              alert(player2 + " , it's your turn. Choose a category.")
+                alert(player2 + " , it's your turn. Choose a category.")
           }   else {
                   player1 = game.currentPlayer
-                  alert(player1 + " , it's your turn. Choose a category.")
+                    alert(player1 + " , it's your turn. Choose a category.")
               }
     },
     updateScore(){
@@ -138,27 +142,29 @@ $(()=>{
       } else {
             switchPlayer();
         }
+    },
+    startRound(){
+        $('#categories button').on('click', (e) => {
+          let $currentCateogry = $(e.currentTarget).val();
+
+
+        })
     }
 
   } //  END GAME OBJECT
 
   const startGame = () => {
       $('#start').on('click', ()=>{
+          game.startRound();
           $('.row-2').css('display', 'flex')
           $('#start').hide();
-          alert('Choose a category.')
       })
-  }
+  };
 
 
 
-  const startRound = () => {
-      $('#categories button').on('click', (e) => {
-        console.log($(e.currentTarget).val());
-        
-      })
-  }
-startRound();
+
+
 
 
 //******************************************************
@@ -168,5 +174,6 @@ startRound();
 
 
 startGame();
+
 
 }) //end window onload
