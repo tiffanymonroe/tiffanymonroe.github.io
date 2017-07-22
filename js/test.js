@@ -1,7 +1,8 @@
 $(()=>{
 
 // MODAL
-  let modalContainer = $('<div>')
+
+  let $container = $('<div>')
   let $question = $('<p>')
   let $choices = $('<p>')
   let $answer = $('<p>')
@@ -42,6 +43,38 @@ $(()=>{
 
 //******************************************************
 
+
+// CATEGORIES OBJECT-CEPTION
+
+
+  const categories = {[
+    disney: {
+      name: "Disney",
+      questions: ['What date did Disneyland open?'],
+      choices: [['December 5, 1950', 'July 17, 1955', 'June 11, 1955']
+                ],
+      answers: ["July 17, 1955"]
+    },
+    buffyverse: {
+      name: 'Buffyverse',
+      questions: ["What dimension is Lorne from?"],
+      choices: [["Oden-Tal", "Arashmaharr", "Pylea"]
+                ],
+      answers: ["Pylea"]
+    },
+    starwars: {
+      name: 'Star Wars',
+      questions: ["What is the title of Darth Vader's theme music?"],
+      choices: [["The Imperial March <br>", "The Empire <br>", "Darth Vader Theme"]
+                ],
+      answers: ["The Imperial March"]
+    },
+
+
+  ]} // END OBJECT-CEPTION
+
+
+//******************************************************
   let player1 =
       $('.player1 button').on('click', () => {
             let player1 = $('.player1 input').val();
@@ -62,7 +95,7 @@ $(()=>{
     players: [player1, player2],
     round: 0,
     score: 0,
-    getCurrentPlayer(){
+    switchPlayer(){
       if (game.round === 0){
         alert('Enter your names. Then, click "play."')
         startGame();
@@ -74,6 +107,14 @@ $(()=>{
                   alert(player1 + " , it's your turn. Choose a category.")
               }
     },
+    updateScore(){
+      if (answer === true){
+        game.score++;
+      } else {
+            switchPlayer();
+        }
+    }
+
   } //  END GAME OBJECT
 
   const startGame = () => {
@@ -82,10 +123,34 @@ $(()=>{
           $('#start').hide();
           alert('Choose a category.')
       })
-      game.round++;
-      console.log(game.round);
   }
 
-game.getCurrentPlayer();
+  const setTimer = () => {
+    const timer = setInterval(()=>{
+      time--
+      if(time === 0){
+        clearInterval(timer)
+        round++;
+      }
+    }, 1000)
+  }
+
+  // TIMER FROM POKE-A-SQUARE
+
+  const startRound = () => {
+      $('#categories button').on('click', (e) => {
+          setTimer(30);
+      })
+  }
+
+
+
+//******************************************************
+
+
+
+
+
+startGame();
 
 }) //end window onload
