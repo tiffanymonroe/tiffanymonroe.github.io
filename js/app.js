@@ -1,42 +1,44 @@
 $(()=>{
 
-//Modal setup// give credit to Alex in ReadMe.
+  //Modal setup// give credit to Alex in ReadMe.
 
-  let $container = $('<div>')
-  let $mdl = $('<p>')
-  let $choicesContainer = $('<div>')
-  let $choices = $('<button>')
+    let $container = $('<div>')
+    let $question = $('<p>')
+    let $choices = $('<p>')
+    let $answer = $('<p>')
 
 
 
-  const createModal = (questions, choices) => {
+    const createModal = (questions, choices, answers) => {
 
-    $mdl.html(questions)
-    $mdl.css('border-radius', '1%')
-    $mdl.css('position', 'absolute')
-    $mdl.css('zIndex', '1')
-    $mdl.css('width', '50%')
-    $mdl.css('height', '75%')
-    $mdl.css('padding', '5%')
-    $mdl.css('margin', '0 20%')
-    $mdl.css('font-family', "'Amatic SC', cursive")
-    $mdl.css('font-weight', 'bold')
-    $mdl.css('font-size', '2em')
-    $mdl.css('border', '1px solid lightgrey')
-    $mdl.css('box-shadow', '5px 5px 15px #888888')
-    $mdl.css('text-align', 'left')
-    $mdl.css('background-color', 'white')
+      $question.html(questions)
+      $question.css('border-radius', '1%')
+      $question.css('position', 'absolute')
+      $question.css('zIndex', '1')
+      $question.css('width', '50%')
+      $question.css('height', '75%')
+      $question.css('padding', '5%')
+      $question.css('margin', '0 20%')
+      $question.css('font-family', "'Amatic SC', cursive")
+      $question.css('font-weight', 'bold')
+      $question.css('font-size', '2em')
+      $question.css('border', '1px solid lightgrey')
+      $question.css('box-shadow', '5px 5px 15px #888888')
+      $question.css('text-align', 'left')
+      $question.css('background-color', 'white')
 
-    $choices.html(choices)
-    $choices.css('font-family', "'Amatic SC', cursive")
-    $choices.css('font-size', '1em')
+      $choices.html(choices)
+      $choices.css('font-family', "'Amatic SC', cursive")
+      $choices.css('font-size', '1em')
 
-    $('.row-3').append($container)
-    $container.append($mdl)
-    $mdl.append($choicesContainer)
-    $choicesContainer.append($choices)
+      $answer.css('display', 'none')
 
-  }
+      $('.row-3').append($container)
+      $container.append($question)
+      $question.append($choices)
+      $choices.append($answer)
+
+    }
 
 
 
@@ -120,28 +122,30 @@ for (let i=0; i < $categories.length; i++){
 
 //*****************************************//
 const getChoice = () => {
+  $('#categories button').on('click', (e) => {
+      let $category = $(e.currentTarget).val();
     if ($category == $categories[0]){
-      for (let i=0; i < $categories[0].choices[0].length; i++){
-        $choices = $categories[0].choices[0][i];
+      for (let i=0; i < disney.choices[0].length; i++){
+        $choices = disney.choices[0][i];
     }}
       else if ($category == $categories[1]) {
-          for (let i=0; i < $categories[1].answers[0].length; i++){
-            $choices = $categories[1].answers[0][i];
+          for (let i=0; i < $categories[1].choices[0].length; i++){
+            $choices = buffyverse.answers[0][i];
           }
       }   else if ($category == $categories[2]) {
-              for (let i=0; i < $categories[2].answers[0].length; i++){
-                $choices = $categories[2].answers[0][i];
+              for (let i=0; i < $categories[2].choices[0].length; i++){
+                $choices = starwars.answers[0][i];
           } }  else if ($category == $categories[3]) {
                   for (let i=0; i < $categories[3].answers[0].length; i++){
-                    $choices = $categories[3].answers[0][i];
+                    $choices = superheroes.answers[0][i];
                   } }  else if ($category == $categories[4]) {
                           for (let i=0; i < $categories[4].answers[0].length; i++){
-                            $choices = $categories[4].answers[0][i];
+                            $choices = harrypotter.answers[0][i];
                           } }  else {
                                   console.log("Oops! You don't have any choices.");
                               }
+  })
 }
-
 
 
 getChoice();
