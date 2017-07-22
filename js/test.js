@@ -46,35 +46,60 @@ $(()=>{
 
 // CATEGORIES OBJECT-CEPTION
 
-
-  const categories = {[
-    disney: {
+  const categories = [
+    {
       name: "Disney",
       questions: ['What date did Disneyland open?'],
       choices: [['December 5, 1950', 'July 17, 1955', 'June 11, 1955']
                 ],
       answers: ["July 17, 1955"]
     },
-    buffyverse: {
+    {
       name: 'Buffyverse',
       questions: ["What dimension is Lorne from?"],
       choices: [["Oden-Tal", "Arashmaharr", "Pylea"]
                 ],
       answers: ["Pylea"]
     },
-    starwars: {
+    {
       name: 'Star Wars',
       questions: ["What is the title of Darth Vader's theme music?"],
       choices: [["The Imperial March <br>", "The Empire <br>", "Darth Vader Theme"]
                 ],
       answers: ["The Imperial March"]
     },
+    {
+      name: 'Superheroes',
+      questions: ["What is the longest running Superman TV series?"],
+      choices: [["Adventures of Superman","Lois and Clark: The New Adventures of Superman",  "Smallville"]
+                ],
+      answers: ["Smallville"]
+    },
+    {
+      name: 'Harry Potter',
+      questions: ["What inspired J.K. Rowling to create dementors?"],
+      choices: [["Her battle with depression.", "Her belief in ghosts.",
+      "Her recurring nightmare."]
+          ],
+      answers: ["Her battle with depression."]
+    }
+
+  ] // END OBJECT-CEPTION
 
 
-  ]} // END OBJECT-CEPTION
+  // Add Categories to DOM
+
+  for (let i=0; i < categories.length; i++){
+      // console.log(categories[i].name);
+      $addCategories = $('<button/>').text(categories[i].name).attr('value', "" + categories[i].name + "");
+      $addCategories.appendTo('#categories');
+  }
+
 
 
 //******************************************************
+
+
   let player1 =
       $('.player1 button').on('click', () => {
             let player1 = $('.player1 input').val();
@@ -125,24 +150,15 @@ $(()=>{
       })
   }
 
-  const setTimer = () => {
-    const timer = setInterval(()=>{
-      time--
-      if(time === 0){
-        clearInterval(timer)
-        round++;
-      }
-    }, 1000)
-  }
 
-  // TIMER FROM POKE-A-SQUARE
 
   const startRound = () => {
       $('#categories button').on('click', (e) => {
-          setTimer(30);
+        console.log($(e.currentTarget).val());
+        
       })
   }
-
+startRound();
 
 
 //******************************************************
