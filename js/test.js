@@ -123,7 +123,7 @@ $(()=>{
 
   const game = {
     currentPlayer: "",
-    currentCateogry: [],
+    currentCategory: [],
     players: [player1, player2],
     round: 0,
     score: 0,
@@ -145,9 +145,27 @@ $(()=>{
     },
     startRound(){
         $('#categories button').on('click', (e) => {
-          let $currentCateogry = $(e.currentTarget).val();
+          let $currentCategory = $(e.currentTarget).val()
 
+          if ($currentCategory === categories[0].name){
+            console.log("When you wish upon a star.");
+            createModal(categories[0].questions[0], categories[0].choices.[0], categories[0].answers[0])
+          }
+              else if ($currentCategory === categories[1].name) {
+                console.log("Buffy is alive.");
+              }
+                  else if ($currentCategory === categories[2].name) {
+                      console.log("A long time ago, in a galaxy, far, far away...");
+                  }
+                        else if ($currentCategory === categories[3].name) {
+                            console.log("All the superheroes!");
+                        }
+                            else if ($currentCategory === categories[4].name) {
+                                console.log("The boy who lived.");
+                            }
 
+          game.currentCategory.push($currentCategory);
+          console.log(game.currentCategory);
         })
     }
 
@@ -155,9 +173,9 @@ $(()=>{
 
   const startGame = () => {
       $('#start').on('click', ()=>{
-          game.startRound();
           $('.row-2').css('display', 'flex')
           $('#start').hide();
+          game.startRound();
       })
   };
 
