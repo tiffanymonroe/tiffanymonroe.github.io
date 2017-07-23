@@ -123,13 +123,32 @@ input {
   text-align: center;
 }
 
+#modal-container {
+  border-radius: 1%;
+  position: absolute;
+  z-index: 1;
+  width: 50%;
+  height: 75%;
+  padding: 5%;
+  margin: 0 20%;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bolder;
+  font-size: 2em;
+  border: 1px solid lightgrey;
+  box-shadow: 5px 5px 15px #888888;
+  text-align: left;
+  background-color: white;
+}
 
-.choices:hover {
+#choices:hover {
   font-weight: bolder;
   color: #008066;
 }
 
-
+#answer {
+  font-size: 1em;
+  display: none;
+}
 /* Media Queries */
 
 @media (max-width: 860px){

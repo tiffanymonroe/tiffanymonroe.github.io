@@ -2,17 +2,43 @@ $(()=>{
 
 // MODAL
 
-  let $container = $('.modal-container')
-  let $question = $('#question')
-  let $choices = $('#choices')
-  let $answer = $('#answers')
+let $container = $('<div>')
+let $question = $('<p>')
+let $choices = $('<p>')
+let $answer = $('<p>')
 
-  const createModal = () => {
-    $('.row-3').append($container)
-    $container.append($question)
-    $question.append($choices)
-    $choices.append($answer)
-  }
+
+
+const createModal = () => {
+
+  $question.html()
+  $question.css('border-radius', '1%')
+  $question.css('position', 'absolute')
+  $question.css('zIndex', '1')
+  $question.css('width', '50%')
+  $question.css('height', '75%')
+  $question.css('padding', '5%')
+  $question.css('margin', '0 20%')
+  $question.css('font-family', "'Amatic SC', cursive")
+  $question.css('font-weight', 'bold')
+  $question.css('font-size', '2em')
+  $question.css('border', '1px solid lightgrey')
+  $question.css('box-shadow', '5px 5px 15px #888888')
+  $question.css('text-align', 'left')
+  $question.css('background-color', 'white')
+
+  $choices.html()
+  $choices.css('font-family', "'Amatic SC', cursive")
+  $choices.css('font-size', '1em')
+
+  $answer.css('display', 'none')
+
+  $('.row-3').append($container)
+  $container.append($question)
+  $question.append($choices)
+  $choices.append($answer)
+
+}
 
   // Categories
 
@@ -118,7 +144,6 @@ $(()=>{
 
   const game = {
     currentPlayer: "",
-    currentCategory: [],
     players: [player1, player2],
     round: 0,
     score: 0,
@@ -134,16 +159,12 @@ $(()=>{
     startRound(){
       $('#categories button').on('click', (e) => {
         let $currentCategory = $(e.currentTarget).val()
-        game.currentCategory.push($currentCategory);
-        console.log(game.currentCategory);
             if ($currentCategory === disney.name){
               console.log("When you wish upon a star.");
-              for (let i=0; i < disney.choices.length; i++){
                 createModal();
-                $question = disney.questions
-                $choices= disney.choices[i]
-                $answer = disney.answers
-              }
+                $question.html(disney.question)
+                $choices.html(disney.choices[0] + "</p><p>" + disney.choices[1] + "</p><p>" + disney.choices[2])
+                $answer.html(disney.answers)
 
             }
                 else if ($currentCategory === buffyverse.name) {
