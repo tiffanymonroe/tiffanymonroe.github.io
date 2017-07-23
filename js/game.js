@@ -1,11 +1,52 @@
 $(()=>{
+// MODAL
+
+  let $container = $('<div>')
+  let $question = $('<p>')
+  let $choices = $('<p>')
+  let $answer = $('<p>')
+
+  const createModal = () => {
+
+    $question.css('border-radius', '1%')
+    $question.css('position', 'absolute')
+    $question.css('zIndex', '1')
+    $question.css('width', '50%')
+    $question.css('height', '75%')
+    $question.css('padding', '5%')
+    $question.css('margin', '0 20%')
+    $question.css('font-family', "'Amatic SC', cursive")
+    $question.css('font-weight', 'bold')
+    $question.css('font-size', '2em')
+    $question.css('border', '1px solid lightgrey')
+    $question.css('box-shadow', '5px 5px 15px #888888')
+    $question.css('text-align', 'left')
+    $question.css('background-color', 'white')
+
+    $choices.css('font-family', "'Amatic SC', cursive")
+    $choices.css('font-size', '1em')
+
+
+    $answer.css('display', 'none')
+    $answer.css('font-family', "'Amatic SC', cursive")
+    $answer.css('font-size', '1em')
+
+    $('.row-3').append($container)
+    $container.append($question)
+    $question.append($choices)
+    $choices.append($answer)
+
+  }
+
+//===================================================
+
 
 let round = 0;
 let score1 = 0;
 let score2 = 0;
 
 
-
+//
 
 //two players
 let player1 =
@@ -108,9 +149,33 @@ let player2 =
 
 // GET QUESTIONS OUT OF THE CATEGORIES OBJECT
 
+
   const getQuestions = () => {
-    $
+    $('#categories button').on('click', (e) => {
+        $currentCategory = $(e.currentTarget).val()
+            if ($currentCategory === categories[0].name){
+                createModal();
+                $question.text(categories[0].questions[0])
+            }
+            else if ($currentCategory === categories[1].name) {
+                createModal();
+                $question.text(categories[1].questions[0])
+            }
+            else if ($currentCategory === categories[2].name) {
+                createModal();
+                $question.text(categories[2].questions[0])
+            }
+            else if ($currentCategory === categories[3].name) {
+                createModal();
+                $question.text(categories[3].questions[0])
+            }
+            else if ($currentCategory === categories[4].name) {
+                createModal();
+                $question.text(categories[4].questions[0])
+            }
+    })
   }
+
 
 // GET CHOICES OUT OF THE CATEGORIES OBJECT
 
@@ -143,5 +208,6 @@ let player2 =
 
 startGame();
 currentCategory();
+getQuestions();
 
 })//end window onload
