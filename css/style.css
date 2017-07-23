@@ -8,7 +8,6 @@ body {
   flex-wrap: wrap;
   width: 100%;
   height: auto;
-
 }
 
 .row-1 {
@@ -141,7 +140,7 @@ input {
 }*/
 
 .choices:hover {
-  font-weight: bolder;
+  font-stretch: expanded;
   color: #008066;
 }
 

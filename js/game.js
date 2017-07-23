@@ -10,27 +10,23 @@ $(()=>{
 
     $question.css('border-radius', '1%')
     $question.css('position', 'absolute')
-    $question.css('zIndex', '1')
     $question.css('width', '50%')
     $question.css('height', 'auto')
     $question.css('padding', '5%')
     $question.css('margin', '0 20%')
-    $question.css('font-family', "'Amatic SC', cursive")
+    $question.css('font-family', "'Cabin', sans-serif")
     $question.css('font-weight', 'bold')
-    $question.css('font-size', '2em')
+    $question.css('font-size', '1em')
     $question.css('border', '1px solid lightgrey')
     $question.css('box-shadow', '5px 5px 15px #888888')
     $question.css('text-align', 'left')
     $question.css('background-color', 'white')
 
-    $choices.css('font-family', "'Amatic SC', cursive")
+    $choices.css('font-family', "'Cabin', sans-serif")
     $choices.css('font-size', '1em')
 
-
-
-
     $answer.css('display', 'none')
-    $answer.css('font-family', "'Amatic SC', cursive")
+    $answer.css('font-family', "'Cabin', sans-serif")
     $answer.css('font-size', '1em')
 
     $('.row-3').append($container)
@@ -40,69 +36,15 @@ $(()=>{
 
   }
 
+  const clearModal = () => {
+    $container.empty();
+    $question.empty();
+    $choices.empty();
+    $answer.empty();
+  }
+
 //===================================================
 
-
-//two players
-let player1 =
-    $('.player1 button').on('click', () => {
-          let player1 = $('.player1 input').val();
-          $('.player1 input').hide();
-          $('.player1 button').hide();
-          console.log(player1);
-    })
-
-let player2 =
-    $('.player2 button').on('click', () => {
-          let player2 = $('.player2 input').val();
-          $('.player2 input').hide();
-          $('.player2 button').hide();
-          console.log(player2);
-    })
-
-
-    //GAME OBJECT========================================
-
-        //ROUNDS
-        //SCORE
-        //CHECK FOR: win / loss / tie / no further plays / continue on
-
-    const game = {
-        round: 0,
-        currentPlayer:
-        score1: 0,
-        score2: 0,
-        currentPlayer(){
-          if (game.round % 2 === 0){
-                  player2 = game.currentPlayer
-                    alert(player2 + " , it's your turn. Choose a category.")
-              }   else {
-                      player1 = game.currentPlayer
-                        alert(player1 + " , it's your turn. Choose a category.")
-                  }
-        },
-        checkAnswer(){
-            $('.choices').on('click', (e)=>{
-              $chosenAnswer = $(e.currentTarget).val()
-                    if ($chosenAnswer === $answer.val() || game.currentPlayer === player1){
-                        round++;
-                        score1++
-                    }
-                    else if ($chosenAnswer === $answer.val() || game.currentPlayer === player2) {
-                        round++;
-                        score2++
-                    }
-                    else if ($chosenAnswer != $answer.val() || game.currentPlayer === player1) {
-                        game.currentPlayer = player2
-                    }
-                    else if ($chosenAnswer != $answer.val() || game.currentPlayer === player2) {
-                        game.currentPlayer = player1
-                    }
-            })
-        },
-
-      }
-    //===================================================
 
 
 // CATEGORIES OBJECT-CEPTION
@@ -160,6 +102,100 @@ let player2 =
       }
 
 
+//===================================================
+
+
+      //ROUNDS
+
+      let round = 1;
+      $('<h3/>').text('Round: ' + round).appendTo('.row-1')
+
+        const updateRound = () => {
+            if (round <= 5 && score1 < 3 || round <= 5 && score2 < 3 ){
+              $('.row-1 h3').text('Round: ' + round)
+            }
+            else if (score1 = 3) {
+              $('.row-1 h3').text(player1 + 'wins!')
+            }
+            else if (score2 = 3) {
+              $('.row-1 h3').text(player2 + 'wins!')
+            }
+            else if (round === 5) {
+              $('.row-1 h3').text('Game Over!')
+            }
+            else $('.row-1 h3').text('Game Over!')
+        }
+
+      //SCORE
+
+      let score1 = 0;
+      let score2 = 0;
+
+
+      //TWO PLAYERS
+
+      let player1 =
+          $('.player1 button').on('click', () => {
+                let player1 = $('.player1 input').val();
+                $('.player1 input').hide();
+                $('.player1 button').hide();
+                $('#player1-info').text(player1 + "'s score: ")
+
+                console.log(player1);
+          })
+
+      let player2 =
+          $('.player2 button').on('click', () => {
+                let player2 = $('.player2 input').val();
+                $('.player2 input').hide();
+                $('.player2 button').hide();
+                $('#player2-info').text(player2 + "'s score: ")
+                console.log(player2);
+          })
+
+
+
+
+        //CHECK FOR: win / loss / tie / no further plays / continue on
+
+
+
+
+
+        const checkAnswer = () => {
+              $('.choices').on('click', (e)=>{
+                    $chosenAnswer = $(e.currentTarget).val();
+                    console.log($chosenAnswer);
+                          if ($chosenAnswer === $answer.val() && round % 2 != 0) {
+                              clearModal();
+                              round++;
+                              updateRound();
+                              score1++;
+                              $('#player1-score').text(score1)
+                          }
+                          else if ($chosenAnswer === $answer.val() && round % 2 === 0) {
+                              clearModal();
+                              round++;
+                              updateRound();
+                              score2++;
+                              $('#player2-score').text(score2)
+                          }
+                          else if ($chosenAnswer != $answer.val()) {
+                              round++;
+                              updateRound();
+                              console.log("next round");
+                          }
+                          else {
+                            round++;
+                            updateRound();
+                            console.log('Oops!');
+                          }
+
+                  })
+        }
+
+
+//===================================================
 
 // ESTABLISH CATEGORY CHOSEN
 // GET QUESTIONS OUT OF THE CATEGORIES OBJECT
@@ -172,10 +208,12 @@ let player2 =
             if ($currentCategory === categories[0].name){
                 console.log("When you wish upon a star.");
                 for (let i = 0; i < 3; i++){
-                  $('<p/>').html(categories[0].choices[0][i]).attr('value', "" + categories[0].choices[0][i] + "").appendTo($choices)
+                  $('<p/>').html(categories[0].choices[0][i]).addClass('choices').attr('value', "" + categories[0].choices[0][i] + "").appendTo($choices)
                   $question.text(categories[0].questions[0])
                   $answer.attr('value','July 17, 1955')
                   createModal();
+                  checkAnswer();
+                  $(e.currentTarget).remove();
                 }
             }
             else if ($currentCategory === categories[1].name) {
@@ -185,6 +223,8 @@ let player2 =
                   $question.text(categories[1].questions[0])
                   $answer.attr('value', 'Pylea')
                   createModal();
+                  checkAnswer();
+                  $(e.currentTarget).remove();
                 }
             }
             else if ($currentCategory === categories[2].name) {
@@ -194,6 +234,8 @@ let player2 =
                   $question.text(categories[2].questions[0])
                   $answer.attr('value', 'The Imperial March')
                   createModal();
+                  checkAnswer();
+                  $(e.currentTarget).remove();
                 }
             }
             else if ($currentCategory === categories[3].name) {
@@ -203,6 +245,8 @@ let player2 =
                   $question.text(categories[3].questions[0])
                   $answer.attr('value', 'Smallville')
                   createModal();
+                  checkAnswer();
+                  $(e.currentTarget).remove();
                 }
             }
             else if ($currentCategory === categories[4].name) {
@@ -212,9 +256,12 @@ let player2 =
                   $question.text(categories[4].questions[0])
                   $answer.attr('value', 'Her battle with depression.')
                   createModal();
+                  checkAnswer();
+                  $(e.currentTarget).remove();
                 }
             }
     })
+
   }
 
 
@@ -227,6 +274,7 @@ let player2 =
 // start game
 
   const startGame = () => {
+
         $('#start').on('click', ()=>{
             showModal();
             $('.row-2').css('display', 'flex')
