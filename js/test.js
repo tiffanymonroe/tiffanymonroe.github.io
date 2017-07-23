@@ -41,7 +41,7 @@ $(()=>{
     $('.row-3').append($container)
     $container.append($question)
     $question.append($choices)
-    $choices.append($answer)
+    
 
   }
 
@@ -126,8 +126,6 @@ $(()=>{
 
 
 
-
-
 //******************************************************
 
 
@@ -172,9 +170,6 @@ $(()=>{
         console.log(game.currentCategory);
             if ($currentCategory === disney.name){
               console.log("When you wish upon a star.");
-               let $disneyQ = disney.questions[0];
-               let $disneyC = disney.choices[0]);
-               console.log($disneyC);
 
             }
                 else if ($currentCategory === buffyverse.name) {
