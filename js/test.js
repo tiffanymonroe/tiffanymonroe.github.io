@@ -47,65 +47,83 @@ $(()=>{
 
 
 
-//******************************************************
+  // Categories
 
 
-// CATEGORIES OBJECT-CEPTION
+  //*****************************************//
 
-  const categories = [
-    {
+  const disney = {
       name: "Disney",
-      questions: ['What date did Disneyland open?'],
-      choices: [['December 5, 1950', 'July 17, 1955', 'June 11, 1955']
-                ],
-      answers: ["July 17, 1955"]
-    },
-    {
-      name: 'Buffyverse',
-      questions: ["What dimension is Lorne from?"],
-      choices: [["Oden-Tal", "Arashmaharr", "Pylea"]
-                ],
-      answers: ["Pylea"]
-    },
-    {
-      name: 'Star Wars',
-      questions: ["What is the title of Darth Vader's theme music?"],
-      choices: [["The Imperial March <br>", "The Empire <br>", "Darth Vader Theme"]
-                ],
-      answers: ["The Imperial March"]
-    },
-    {
-      name: 'Superheroes',
-      questions: ["What is the longest running Superman TV series?"],
-      choices: [["Adventures of Superman","Lois and Clark: The New Adventures of Superman",  "Smallville"]
-                ],
-      answers: ["Smallville"]
-    },
-    {
-      name: 'Harry Potter',
-      questions: ["What inspired J.K. Rowling to create dementors?"],
-      choices: [["Her battle with depression.", "Her belief in ghosts.",
-      "Her recurring nightmare."]
-          ],
-      answers: ["Her battle with depression."]
-    }
+        questions: 'What date did Disneyland open?',
+        choices: ['December 5, 1950', 'July 17, 1955', 'June 11, 1955'],
+        answers: [1]
+      }
 
-  ] // END OBJECT-CEPTION
+  console.log(disney);
+
+  //*****************************************//
+
+  const buffyverse = {
+    name: 'Buffyverse',
+    questions: "What dimension is Lorne from?",
+    choices: ["Oden-Tal", "Arashmaharr", "Pylea"],
+    answers: [2]
+
+  }
+
+  console.log(buffyverse);
+
+  //*****************************************//
+
+  const starwars = {
+    name: 'Star Wars',
+    questions: "What is the title of Darth Vader's theme music?",
+    choices: ["The Imperial March", "The Empire", "Darth Vader Theme"],
+    answers: [0]
+
+  }
+
+  console.log(starwars);
+
+  //*****************************************//
+
+  const superheroes = {
+    name: 'Superheroes',
+    questions: "What is the longest running Superman TV series?",
+    choices: ["Adventures of Superman","Lois and Clark: The New Adventures of Superman",  "Smallville",
+    answers: [0]
+
+  }
+
+  console.log(superheroes);
+
+  //*****************************************//
+
+  const harrypotter = {
+    name: 'Harry Potter',
+    questions: "What inspired J.K. Rowling to create dementors?",
+    choices: ["Her battle with depression.", "Her belief in ghosts.",
+    "Her recurring nightmare."],
+    answers: [0]
+  }
+
+  console.log(harrypotter);
+
+
 
 
   // Add Categories to DOM
 
-  for (let i=0; i < categories.length; i++){
-      // console.log(categories[i].name);
-      $addCategories = $('<button/>').text(categories[i].name).attr('value', "" + categories[i].name + "");
-      $addCategories.appendTo('#categories');
+  const $categories = [disney.name, superheroes.name, buffyverse.name, starwars.name, harrypotter.name];
+  for (let i=0; i < $categories.length; i++){
+    // let $randomCategory = $categories[Math.floor(Math.random() * $categories.length)];
+    $addCategories = $('<button/>').text($categories[i]).attr('value', "" + $categories[i] + "");
+    $addCategories.appendTo('#categories');
   }
 
-  const $disney = categories[0]
-  const $buffyverse = categories[1]
-  const $starwars = categories[2]
-  const $superheroes = categories[3]
-  const $harrypotter = categories[4]
+
+  // Get choices
+
 
 
 
@@ -152,40 +170,29 @@ $(()=>{
         let $currentCategory = $(e.currentTarget).val()
         game.currentCategory.push($currentCategory);
         console.log(game.currentCategory);
-      for (let i=0; i < categories[i].choices.length; i++){
-            if ($currentCategory === categories[0].name){
+            if ($currentCategory === disney.name){
               console.log("When you wish upon a star.");
-              createModal(categories[0].questions[0],
-              categories[0].choices[0],
-              categories[0].answers[0]);
+               let $disneyQ = disney.questions[0];
+               let $disneyC = disney.choices[0]);
+               console.log($disneyC);
 
             }
-                else if ($currentCategory === categories[1].name) {
+                else if ($currentCategory === buffyverse.name) {
                   console.log("Buffy is alive.");
-                  createModal(categories[1].questions[0],
-                  categories[1].choices[0],
-                  categories[1].answers[0]);
-                }
-                    else if ($currentCategory === categories[2].name) {
-                        console.log("A long time ago, in a galaxy, far, far away...");
-                        createModal(categories[2].questions[0],
-                        categories[2].choices[0],
-                        categories[2].answers[0]);
-                    }
-                          else if ($currentCategory === categories[3].name) {
-                              console.log("All the superheroes!");
-                              createModal(categories[3].questions[0],
-                              categories[3].choices[0],
-                              categories[3].answers[0]);
-                          }
-                              else if ($currentCategory === categories[4].name) {
-                                  console.log("The boy who lived.");
-                                  createModal(categories[4].questions[0],
-                                  categories[4].choices[0],
-                                  categories[4].answers[0]);
-                              }
 
-      }
+                }
+                    else if ($currentCategory === starwars.name) {
+                        console.log("A long time ago, in a galaxy, far, far away...");
+
+                    }
+                          else if ($currentCategory === superheroes.name) {
+                              console.log("All the superheroes!");
+
+                          }
+                              else if ($currentCategory === harrypotter.name) {
+                                  console.log("The boy who lived.");
+
+                              }
     })
   },
   updateScore(){
