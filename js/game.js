@@ -25,6 +25,8 @@ $(()=>{
 
     $choices.css('font-family', "'Amatic SC', cursive")
     $choices.css('font-size', '1em')
+    $choices.css('border', '2px dotted hotpink')
+
 
 
     $answer.css('display', 'none')
@@ -122,6 +124,8 @@ let player2 =
       $addCategories.appendTo('#categories');
       }
 
+
+
 // ESTABLISH CATEGORY CHOSEN
 
 
@@ -154,8 +158,9 @@ let player2 =
     $('#categories button').on('click', (e) => {
         $currentCategory = $(e.currentTarget).val()
             if ($currentCategory === categories[0].name){
-                createModal();
                 $question.text(categories[0].questions[0])
+                getChoices();
+                createModal();
             }
             else if ($currentCategory === categories[1].name) {
                 createModal();
@@ -178,6 +183,18 @@ let player2 =
 
 
 // GET CHOICES OUT OF THE CATEGORIES OBJECT
+
+  const getChoices = () => {
+    for (let i = 0; i < 3; i++){
+      let $choice0 = $('<p/>').html(categories[0].choices[0][i]).appendTo($choices)
+    }
+
+
+
+  }
+
+
+
 
 
 
