@@ -161,10 +161,16 @@ const createModal = () => {
         let $currentCategory = $(e.currentTarget).val()
             if ($currentCategory === disney.name){
               console.log("When you wish upon a star.");
+<<<<<<< HEAD
                 createModal();
                 $question.html(disney.question)
                 $choices.html(disney.choices[0] + "</p><p>" + disney.choices[1] + "</p><p>" + disney.choices[2])
                 $answer.html(disney.answers)
+=======
+              for (let i=0; i < disney.choices.length; i++){
+                console.log(disney.choices[i]);
+              }
+>>>>>>> 0388ad14f0d533da7c0cbef97b4f9fa24cda8e0d
 
             }
                 else if ($currentCategory === buffyverse.name) {
