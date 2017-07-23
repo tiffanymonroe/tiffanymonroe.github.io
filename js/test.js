@@ -24,15 +24,19 @@ $(()=>{
     $question.css('box-shadow', '5px 5px 15px #888888')
     $question.css('text-align', 'left')
     $question.css('background-color', 'white')
+    $question.addClass('question')
 
     $choices.html(choices)
     $choices.css('font-family', "'Amatic SC', cursive")
     $choices.css('font-size', '1em')
+    $choices.addClass('choices')
 
     $answer.html(answer)
     $answer.css('display', 'none')
     $answer.css('font-family', "'Amatic SC', cursive")
     $answer.css('font-size', '1em')
+    $answer.addClass('answer')
+
 
     $('.row-3').append($container)
     $container.append($question)
@@ -97,6 +101,13 @@ $(()=>{
       $addCategories.appendTo('#categories');
   }
 
+  const $disney = categories[0]
+  const $buffyverse = categories[1]
+  const $starwars = categories[2]
+  const $superheroes = categories[3]
+  const $harrypotter = categories[4]
+
+
 
 
 //******************************************************
@@ -136,40 +147,60 @@ $(()=>{
                     alert(player1 + " , it's your turn. Choose a category.")
               }
     },
-    updateScore(){
-      if (answer === true){
-        game.score++;
-      } else {
-            switchPlayer();
-        }
-    },
     startRound(){
-        $('#categories button').on('click', (e) => {
-          let $currentCategory = $(e.currentTarget).val()
+      $('#categories button').on('click', (e) => {
+        let $currentCategory = $(e.currentTarget).val()
+        game.currentCategory.push($currentCategory);
+        console.log(game.currentCategory);
+      for (let i=0; i < categories[i].choices.length; i++){
+            if ($currentCategory === categories[0].name){
+              console.log("When you wish upon a star.");
+              createModal(categories[0].questions[0],
+              categories[0].choices[0],
+              categories[0].answers[0]);
 
-          if ($currentCategory === categories[0].name){
-            console.log("When you wish upon a star.");
-            createModal(categories[0].questions[0], categories[0].choices.[0], categories[0].answers[0])
-          }
-              else if ($currentCategory === categories[1].name) {
-                console.log("Buffy is alive.");
-              }
-                  else if ($currentCategory === categories[2].name) {
-                      console.log("A long time ago, in a galaxy, far, far away...");
-                  }
-                        else if ($currentCategory === categories[3].name) {
-                            console.log("All the superheroes!");
-                        }
-                            else if ($currentCategory === categories[4].name) {
-                                console.log("The boy who lived.");
-                            }
+            }
+                else if ($currentCategory === categories[1].name) {
+                  console.log("Buffy is alive.");
+                  createModal(categories[1].questions[0],
+                  categories[1].choices[0],
+                  categories[1].answers[0]);
+                }
+                    else if ($currentCategory === categories[2].name) {
+                        console.log("A long time ago, in a galaxy, far, far away...");
+                        createModal(categories[2].questions[0],
+                        categories[2].choices[0],
+                        categories[2].answers[0]);
+                    }
+                          else if ($currentCategory === categories[3].name) {
+                              console.log("All the superheroes!");
+                              createModal(categories[3].questions[0],
+                              categories[3].choices[0],
+                              categories[3].answers[0]);
+                          }
+                              else if ($currentCategory === categories[4].name) {
+                                  console.log("The boy who lived.");
+                                  createModal(categories[4].questions[0],
+                                  categories[4].choices[0],
+                                  categories[4].answers[0]);
+                              }
 
-          game.currentCategory.push($currentCategory);
-          console.log(game.currentCategory);
-        })
+      }
+    })
+  },
+  updateScore(){
+    if (answer === true){
+          game.score++;
+          game.currentCategory.splice();
+          game.currentChoices.splice();
+        } else {
+              switchPlayer();
     }
-
+  }
   } //  END GAME OBJECT
+
+
+
 
   const startGame = () => {
       $('#start').on('click', ()=>{
@@ -178,7 +209,6 @@ $(()=>{
           game.startRound();
       })
   };
-
 
 
 
