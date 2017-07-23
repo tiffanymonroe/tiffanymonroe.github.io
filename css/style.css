@@ -123,10 +123,13 @@ input {
   text-align: center;
 }
 
+
 .choices:hover {
   font-weight: bolder;
   color: #008066;
 }
+
+
 /* Media Queries */
 
 @media (max-width: 860px){

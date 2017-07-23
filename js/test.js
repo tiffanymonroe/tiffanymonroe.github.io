@@ -2,50 +2,17 @@ $(()=>{
 
 // MODAL
 
-  let $container = $('<div>')
-  let $question = $('<p>')
-  let $choices = $('<p>')
-  let $answer = $('<p>')
+  let $container = $('.modal-container')
+  let $question = $('#question')
+  let $choices = $('#choices')
+  let $answer = $('#answers')
 
-  const createModal = (question, choices, answer) => {
-
-    $question.html(question)
-    $question.css('border-radius', '1%')
-    $question.css('position', 'absolute')
-    $question.css('zIndex', '1')
-    $question.css('width', '50%')
-    $question.css('height', '75%')
-    $question.css('padding', '5%')
-    $question.css('margin', '0 20%')
-    $question.css('font-family', "'Amatic SC', cursive")
-    $question.css('font-weight', 'bold')
-    $question.css('font-size', '2em')
-    $question.css('border', '1px solid lightgrey')
-    $question.css('box-shadow', '5px 5px 15px #888888')
-    $question.css('text-align', 'left')
-    $question.css('background-color', 'white')
-    $question.addClass('question')
-
-    $choices.html(choices)
-    $choices.css('font-family', "'Amatic SC', cursive")
-    $choices.css('font-size', '1em')
-    $choices.addClass('choices')
-
-    $answer.html(answer)
-    $answer.css('display', 'none')
-    $answer.css('font-family', "'Amatic SC', cursive")
-    $answer.css('font-size', '1em')
-    $answer.addClass('answer')
-
-
+  const createModal = () => {
     $('.row-3').append($container)
     $container.append($question)
     $question.append($choices)
-    
-
+    $choices.append($answer)
   }
-
-
 
   // Categories
 
@@ -58,6 +25,7 @@ $(()=>{
         choices: ['December 5, 1950', 'July 17, 1955', 'June 11, 1955'],
         answers: [1]
       }
+
 
   console.log(disney);
 
@@ -90,7 +58,7 @@ $(()=>{
   const superheroes = {
     name: 'Superheroes',
     questions: "What is the longest running Superman TV series?",
-    choices: ["Adventures of Superman","Lois and Clark: The New Adventures of Superman",  "Smallville",
+    choices: ["Adventures of Superman","Lois and Clark: The New Adventures of Superman",  "Smallville"],
     answers: [0]
 
   }
@@ -170,6 +138,12 @@ $(()=>{
         console.log(game.currentCategory);
             if ($currentCategory === disney.name){
               console.log("When you wish upon a star.");
+              for (let i=0; i < disney.choices.length; i++){
+                createModal();
+                $question = disney.questions
+                $choices= disney.choices[i]
+                $answer = disney.answers
+              }
 
             }
                 else if ($currentCategory === buffyverse.name) {
