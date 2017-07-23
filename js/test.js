@@ -139,10 +139,7 @@ $(()=>{
             if ($currentCategory === disney.name){
               console.log("When you wish upon a star.");
               for (let i=0; i < disney.choices.length; i++){
-                createModal();
-                $question = disney.questions
-                $choices= disney.choices[i]
-                $answer = disney.answers
+                console.log(disney.choices[i]);
               }
 
             }
