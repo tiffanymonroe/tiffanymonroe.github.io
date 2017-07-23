@@ -12,7 +12,7 @@ $(()=>{
     $question.css('position', 'absolute')
     $question.css('zIndex', '1')
     $question.css('width', '50%')
-    $question.css('height', '75%')
+    $question.css('height', 'auto')
     $question.css('padding', '5%')
     $question.css('margin', '0 20%')
     $question.css('font-family', "'Amatic SC', cursive")
@@ -25,7 +25,7 @@ $(()=>{
 
     $choices.css('font-family', "'Amatic SC', cursive")
     $choices.css('font-size', '1em')
-    $choices.css('border', '2px dotted hotpink')
+
 
 
 
@@ -158,25 +158,39 @@ let player2 =
     $('#categories button').on('click', (e) => {
         $currentCategory = $(e.currentTarget).val()
             if ($currentCategory === categories[0].name){
+              for (let i = 0; i < 3; i++){
+                $('<p/>').html(categories[0].choices[0][i]).attr('value', "" + categories[0].choices[0][i] + "").appendTo($choices)
                 $question.text(categories[0].questions[0])
-                getChoices();
                 createModal();
+              }
             }
             else if ($currentCategory === categories[1].name) {
-                createModal();
+              for (let i = 0; i < 3; i++){
+                $('<p/>').html(categories[1].choices[0][i]).addClass('choices').attr('value', "" + categories[1].choices[0][i] + "").appendTo($choices)
                 $question.text(categories[1].questions[0])
+                createModal();
+              }
             }
             else if ($currentCategory === categories[2].name) {
-                createModal();
+              for (let i = 0; i < 3; i++){
+                $('<p/>').html(categories[2].choices[0][i]).addClass('choices').attr('value', "" + categories[2].choices[0][i] + "").appendTo($choices)
                 $question.text(categories[2].questions[0])
+                createModal();
+              }
             }
             else if ($currentCategory === categories[3].name) {
-                createModal();
+              for (let i = 0; i < 3; i++){
+                $('<p/>').html(categories[3].choices[0][i]).addClass('choices').attr('value', "" + categories[3].choices[0][i] + "").appendTo($choices)
                 $question.text(categories[3].questions[0])
+                createModal();
+              }
             }
             else if ($currentCategory === categories[4].name) {
-                createModal();
+              for (let i = 0; i < 3; i++){
+                $('<p/>').html(categories[4].choices[0][i]).addClass('choices').attr('value', "" + categories[4].choices[0][i] + "").appendTo($choices)
                 $question.text(categories[4].questions[0])
+                createModal();
+              }
             }
     })
   }
@@ -185,8 +199,11 @@ let player2 =
 // GET CHOICES OUT OF THE CATEGORIES OBJECT
 
   const getChoices = () => {
+
     for (let i = 0; i < 3; i++){
       let $choice0 = $('<p/>').html(categories[0].choices[0][i]).appendTo($choices)
+      $question.text(categories[0].questions[0])
+      createModal();
     }
 
 
