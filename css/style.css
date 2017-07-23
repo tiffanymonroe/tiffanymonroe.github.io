@@ -140,7 +140,7 @@ input {
   background-color: white;
 }*/
 
-#choices:hover {
+.choices:hover {
   font-weight: bolder;
   color: #008066;
 }

@@ -44,6 +44,7 @@ $(()=>{
 
 
 let round = 0;
+let score = 0;
 let score1 = 0;
 let score2 = 0;
 
@@ -127,95 +128,79 @@ let player2 =
 
 
 // ESTABLISH CATEGORY CHOSEN
-
-
-  const currentCategory = () => {
-    $('#categories button').on('click', (e) => {
-        $currentCategory = $(e.currentTarget).val()
-            if ($currentCategory === categories[0].name){
-              console.log("When you wish upon a star.");
-            }
-                else if ($currentCategory === categories[1].name) {
-                  console.log("Buffy is alive.");
-                }
-                    else if ($currentCategory === categories[2].name) {
-                        console.log("A long time ago, in a galaxy, far, far away...");
-                    }
-                          else if ($currentCategory === categories[3].name) {
-                              console.log("All the superheroes!");
-                          }
-                              else if ($currentCategory === categories[4].name) {
-                                  console.log("The boy who lived.");
-                              }
-    })
-  }
-
-
 // GET QUESTIONS OUT OF THE CATEGORIES OBJECT
-
-
-  const getQuestions = () => {
-    $('#categories button').on('click', (e) => {
-        $currentCategory = $(e.currentTarget).val()
-            if ($currentCategory === categories[0].name){
-              for (let i = 0; i < 3; i++){
-                $('<p/>').html(categories[0].choices[0][i]).attr('value', "" + categories[0].choices[0][i] + "").appendTo($choices)
-                $question.text(categories[0].questions[0])
-                createModal();
-              }
-            }
-            else if ($currentCategory === categories[1].name) {
-              for (let i = 0; i < 3; i++){
-                $('<p/>').html(categories[1].choices[0][i]).addClass('choices').attr('value', "" + categories[1].choices[0][i] + "").appendTo($choices)
-                $question.text(categories[1].questions[0])
-                createModal();
-              }
-            }
-            else if ($currentCategory === categories[2].name) {
-              for (let i = 0; i < 3; i++){
-                $('<p/>').html(categories[2].choices[0][i]).addClass('choices').attr('value', "" + categories[2].choices[0][i] + "").appendTo($choices)
-                $question.text(categories[2].questions[0])
-                createModal();
-              }
-            }
-            else if ($currentCategory === categories[3].name) {
-              for (let i = 0; i < 3; i++){
-                $('<p/>').html(categories[3].choices[0][i]).addClass('choices').attr('value', "" + categories[3].choices[0][i] + "").appendTo($choices)
-                $question.text(categories[3].questions[0])
-                createModal();
-              }
-            }
-            else if ($currentCategory === categories[4].name) {
-              for (let i = 0; i < 3; i++){
-                $('<p/>').html(categories[4].choices[0][i]).addClass('choices').attr('value', "" + categories[4].choices[0][i] + "").appendTo($choices)
-                $question.text(categories[4].questions[0])
-                createModal();
-              }
-            }
-    })
-  }
-
-
 // GET CHOICES OUT OF THE CATEGORIES OBJECT
 
-  const getChoices = () => {
 
-    for (let i = 0; i < 3; i++){
-      let $choice0 = $('<p/>').html(categories[0].choices[0][i]).appendTo($choices)
-      $question.text(categories[0].questions[0])
-      createModal();
-    }
-
-
-
+  const showModal = () => {
+    $('#categories button').on('click', (e) => {
+        $currentCategory = $(e.currentTarget).val()
+            if ($currentCategory === categories[0].name){
+                console.log("When you wish upon a star.");
+                for (let i = 0; i < 3; i++){
+                  $('<p/>').html(categories[0].choices[0][i]).attr('value', "" + categories[0].choices[0][i] + "").appendTo($choices)
+                  $question.text(categories[0].questions[0])
+                  $answer.attr('value','July 17, 1955')
+                  createModal();
+                }
+            }
+            else if ($currentCategory === categories[1].name) {
+                console.log("Buffy is alive.");
+                for (let i = 0; i < 3; i++){
+                  $('<p/>').html(categories[1].choices[0][i]).addClass('choices').attr('value', "" + categories[1].choices[0][i] + "").appendTo($choices)
+                  $question.text(categories[1].questions[0])
+                  $answer.attr('value', 'Pylea')
+                  createModal();
+                }
+            }
+            else if ($currentCategory === categories[2].name) {
+                console.log("A long time ago, in a galaxy, far, far away...");
+                for (let i = 0; i < 3; i++){
+                  $('<p/>').html(categories[2].choices[0][i]).addClass('choices').attr('value', "" + categories[2].choices[0][i] + "").appendTo($choices)
+                  $question.text(categories[2].questions[0])
+                  $answer.attr('value', 'The Imperial March')
+                  createModal();
+                }
+            }
+            else if ($currentCategory === categories[3].name) {
+                console.log("All the superheroes!");
+                for (let i = 0; i < 3; i++){
+                  $('<p/>').html(categories[3].choices[0][i]).addClass('choices').attr('value', "" + categories[3].choices[0][i] + "").appendTo($choices)
+                  $question.text(categories[3].questions[0])
+                  $answer.attr('value', 'Smallville')
+                  createModal();
+                }
+            }
+            else if ($currentCategory === categories[4].name) {
+                console.log("The boy who lived.");
+                for (let i = 0; i < 3; i++){
+                  $('<p/>').html(categories[4].choices[0][i]).addClass('choices').attr('value', "" + categories[4].choices[0][i] + "").appendTo($choices)
+                  $question.text(categories[4].questions[0])
+                  $answer.attr('value', 'Her battle with depression.')
+                  createModal();
+                }
+            }
+    })
   }
-
-
 
 
 
 
 // GET ANSWERS OUT OF THE CATEGORIES OBJECT
+
+  const checkAnswer = () => {
+      $('.choices').on('click', (e)=>{
+        $chosenAnswer = $(e.currentTarget).val()
+            if ($chosenAnswer === $answer.val()){
+              round++;
+              score++
+            }
+            else if ($chosenAnswer != $answer.val()) {
+
+            }
+      })
+
+  }
 //===================================================
 
 //rounds
@@ -232,7 +217,7 @@ let player2 =
 
   const startGame = () => {
         $('#start').on('click', ()=>{
-
+            showModal();
             $('.row-2').css('display', 'flex')
             $('#start').hide();
         })
@@ -241,7 +226,7 @@ let player2 =
 //===================================================
 
 startGame();
-currentCategory();
-getQuestions();
+
+
 
 })//end window onload
