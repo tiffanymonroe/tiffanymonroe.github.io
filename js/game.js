@@ -43,14 +43,6 @@ $(()=>{
 //===================================================
 
 
-let round = 0;
-let score = 0;
-let score1 = 0;
-let score2 = 0;
-
-
-//
-
 //two players
 let player1 =
     $('.player1 button').on('click', () => {
@@ -69,6 +61,48 @@ let player2 =
     })
 
 
+    //GAME OBJECT========================================
+
+        //ROUNDS
+        //SCORE
+        //CHECK FOR: win / loss / tie / no further plays / continue on
+
+    const game = {
+        round: 0,
+        currentPlayer:
+        score1: 0,
+        score2: 0,
+        currentPlayer(){
+          if (game.round % 2 === 0){
+                  player2 = game.currentPlayer
+                    alert(player2 + " , it's your turn. Choose a category.")
+              }   else {
+                      player1 = game.currentPlayer
+                        alert(player1 + " , it's your turn. Choose a category.")
+                  }
+        },
+        checkAnswer(){
+            $('.choices').on('click', (e)=>{
+              $chosenAnswer = $(e.currentTarget).val()
+                    if ($chosenAnswer === $answer.val() || game.currentPlayer === player1){
+                        round++;
+                        score1++
+                    }
+                    else if ($chosenAnswer === $answer.val() || game.currentPlayer === player2) {
+                        round++;
+                        score2++
+                    }
+                    else if ($chosenAnswer != $answer.val() || game.currentPlayer === player1) {
+                        game.currentPlayer = player2
+                    }
+                    else if ($chosenAnswer != $answer.val() || game.currentPlayer === player2) {
+                        game.currentPlayer = player1
+                    }
+            })
+        },
+
+      }
+    //===================================================
 
 
 // CATEGORIES OBJECT-CEPTION
@@ -184,33 +218,10 @@ let player2 =
   }
 
 
-
-
 // GET ANSWERS OUT OF THE CATEGORIES OBJECT
 
-  const checkAnswer = () => {
-      $('.choices').on('click', (e)=>{
-        $chosenAnswer = $(e.currentTarget).val()
-            if ($chosenAnswer === $answer.val()){
-              round++;
-              score++
-            }
-            else if ($chosenAnswer != $answer.val()) {
 
-            }
-      })
-
-  }
 //===================================================
-
-//rounds
-
-
-
-//score
-
-
-//check for win/loss/tie/no further plays/continue on
 
 
 // start game
