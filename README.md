@@ -1,4 +1,5 @@
-
+## Fandom Trivia
+# GA WDI-R Gizmo Project 1
 
 ## The Technology
 Fandom Trivia uses HTML, CSS, JavaScript, and jQuery. The site mainly uses JS and jQuery to store questions, alternate players, and determine rounds, winners, losers, and ties. The modal--with the help of my classmate Alex Alday--displays questions and choices, depending on which category the player chooses.
