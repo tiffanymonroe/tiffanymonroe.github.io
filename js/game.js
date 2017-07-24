@@ -110,17 +110,17 @@ $(()=>{
 
       let round = 1;
       $('<h3/>').text('Round: ' + round).appendTo('.row-1')
-    
+
 
         const updateRound = () => {
             if (round <= 5 && score1 < 3 || round <= 5 && score2 < 3 ){
               $('.row-1 h3').text('Round: ' + round)
             }
             else if (score1 = 3) {
-              $('.row-1 h3').text(player1 + 'wins!')
+              $('.row-1 h3').text('Player 1 wins!')
             }
             else if (score2 = 3) {
-              $('.row-1 h3').text(player2 + 'wins!')
+              $('.row-1 h3').text('Player 2 wins!')
             }
             else if (round === 5) {
               $('.row-1 h3').text('Game Over!')
