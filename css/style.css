@@ -223,7 +223,7 @@ input {
   70% {display: inline-block;
     transform: scale(1.5);
   }
-  80% {display: inline-block;
+  100% {display: inline-block;
     transform: scale(1.25);
   }
   100% {display: inline-block;
