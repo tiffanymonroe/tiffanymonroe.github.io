@@ -90,6 +90,7 @@ $(()=>{
       ]
 
 
+
 // END OBJECT-CEPTION
 
 
@@ -109,6 +110,7 @@ $(()=>{
 
       let round = 1;
       $('<h3/>').text('Round: ' + round).appendTo('.row-1')
+    
 
         const updateRound = () => {
             if (round <= 5 && score1 < 3 || round <= 5 && score2 < 3 ){
@@ -123,7 +125,7 @@ $(()=>{
             else if (round === 5) {
               $('.row-1 h3').text('Game Over!')
             }
-            else $('.row-1 h3').text('Game Over!')
+            else $('.row-1 h3').text('No winner!')
         }
 
       //SCORE
@@ -165,27 +167,30 @@ $(()=>{
         const checkAnswer = () => {
               $('.choices').on('click', (e)=>{
                     $chosenAnswer = $(e.currentTarget).text();
+                    $answer.css('display', 'inline-block')
                     console.log($chosenAnswer);
-                          if ($chosenAnswer === $answer.val() && round % 2 != 0) {
+                          if ($chosenAnswer === $answer.text() && round % 2 != 0) {
                               clearModal();
                               round++;
                               updateRound();
                               score1++;
                               $('#player1-score').text(score1)
                           }
-                          else if ($chosenAnswer === $answer.val() && round % 2 === 0) {
+                          else if ($chosenAnswer === $answer.text() && round % 2 === 0) {
                               clearModal();
                               round++;
                               updateRound();
                               score2++;
                               $('#player2-score').text(score2)
                           }
-                          else if ($chosenAnswer != $answer.val()) {
+                          else if ($chosenAnswer != $answer.text()) {
+                              clearModal();
                               round++;
                               updateRound();
                               console.log("next round");
                           }
                           else {
+                            clearModal();
                             round++;
                             updateRound();
                             console.log('Oops!');
@@ -210,7 +215,7 @@ $(()=>{
                 for (let i = 0; i < 3; i++){
                   $('<p/>').html(categories[0].choices[0][i]).addClass('choices').attr('value', "" + categories[0].choices[0][i] + "").appendTo($choices)
                   $question.text(categories[0].questions[0])
-                  $answer.attr('value','July 17, 1955')
+                  $answer.text(categories[0].answers[0])
                   createModal();
                   checkAnswer();
                   $(e.currentTarget).remove();
@@ -221,7 +226,7 @@ $(()=>{
                 for (let i = 0; i < 3; i++){
                   $('<p/>').html(categories[1].choices[0][i]).addClass('choices').attr('value', "" + categories[1].choices[0][i] + "").appendTo($choices)
                   $question.text(categories[1].questions[0])
-                  $answer.attr('value', 'Pylea')
+                  $answer.text(categories[1].answers[0])
                   createModal();
                   checkAnswer();
                   $(e.currentTarget).remove();
@@ -232,7 +237,7 @@ $(()=>{
                 for (let i = 0; i < 3; i++){
                   $('<p/>').html(categories[2].choices[0][i]).addClass('choices').attr('value', "" + categories[2].choices[0][i] + "").appendTo($choices)
                   $question.text(categories[2].questions[0])
-                  $answer.attr('value', 'The Imperial March')
+                  $answer.text(categories[2].answers[0])
                   createModal();
                   checkAnswer();
                   $(e.currentTarget).remove();
@@ -243,7 +248,7 @@ $(()=>{
                 for (let i = 0; i < 3; i++){
                   $('<p/>').html(categories[3].choices[0][i]).addClass('choices').attr('value', "" + categories[3].choices[0][i] + "").appendTo($choices)
                   $question.text(categories[3].questions[0])
-                  $answer.attr('value', 'Smallville')
+                  $answer.text(categories[3].answers[0])
                   createModal();
                   checkAnswer();
                   $(e.currentTarget).remove();
@@ -254,7 +259,7 @@ $(()=>{
                 for (let i = 0; i < 3; i++){
                   $('<p/>').html(categories[4].choices[0][i]).addClass('choices').attr('value', "" + categories[4].choices[0][i] + "").appendTo($choices)
                   $question.text(categories[4].questions[0])
-                  $answer.attr('value', 'Her battle with depression.')
+                  $answer.text(categories[4].answers[0])
                   createModal();
                   checkAnswer();
                   $(e.currentTarget).remove();
