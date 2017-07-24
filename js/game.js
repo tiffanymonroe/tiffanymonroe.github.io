@@ -125,7 +125,7 @@ $(()=>{
             else if (round === 5) {
               $('.row-1 h3').text('Game Over!')
             }
-            else $('.row-1 h3').text('No winner!')
+            else $('.row-1 h3').text("Oh, no. It's a tie!")
         }
 
       //SCORE
