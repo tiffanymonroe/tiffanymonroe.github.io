@@ -139,6 +139,9 @@ input {
   background-color: white;
 }*/
 
+.choices {
+  padding: 1%;
+}
 .choices:hover {
   font-stretch: expanded;
   color: #008066;

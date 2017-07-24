@@ -164,7 +164,7 @@ $(()=>{
 
         const checkAnswer = () => {
               $('.choices').on('click', (e)=>{
-                    $chosenAnswer = $(e.currentTarget).val();
+                    $chosenAnswer = $(e.currentTarget).text();
                     console.log($chosenAnswer);
                           if ($chosenAnswer === $answer.val() && round % 2 != 0) {
                               clearModal();
