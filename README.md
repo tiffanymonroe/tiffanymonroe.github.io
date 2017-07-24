@@ -1,5 +1,5 @@
-## Fandom Trivia
 # GA WDI-R Gizmo Project 1
+## Fandom Trivia
 
 ## The Technology
 Fandom Trivia uses HTML, CSS, JavaScript, and jQuery. The site mainly uses JS and jQuery to store questions, alternate players, and determine rounds, winners, losers, and ties. The modal--with the help of my classmate Alex Alday--displays questions and choices, depending on which category the player chooses.
@@ -11,4 +11,4 @@ I wanted to create a trivia game for members of different fandoms. My approach w
 There are several things I'd continue working on, if I had more time. I'd like to fix the modal, so that you can't put multiple choices on one modal. I wasn't happy with having to hard code the categories. I know there's a better way to organize it. Because it took me so long to get the iterations to print on the site--they worked in the console--I'd also like to go back to structure it into a more robust game. Alas.
 
 ## The Link:
-tiffanymonroe.github.io
+http://tiffanymonroe.github.io
