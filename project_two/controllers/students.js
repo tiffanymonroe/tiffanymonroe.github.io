@@ -26,14 +26,20 @@ router.post('/', (req, res)=>{
 
 //Show Route
 router.get('/:id', (req, res)=>{
-  console.log(req.params.id);
   Student.findById(req.params.id, (err, foundStudent)=>{
-    console.log(foundStudent);
     res.render('students/show.ejs', {
       student: foundStudent
     });
   });
 });
 
+//Edit Route
+router.get('/:id/edit', (req, res)=>{
+  Student.findById(req.params.id, (err, foundStudent)=>{
+    res.render('students/edit.ejs', {
+      student: foundStudent
+    });
+  });
+});
 
 module.exports = router;
