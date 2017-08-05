@@ -13,19 +13,27 @@ router.get('/', (req, res) => {
 });
 
 //New Route
-
 router.get('/new', (req, res)=>{
   res.render('students/new.ejs');
 });
 
 //Post Route
-
 router.post('/', (req, res)=>{
   Student.create(req.body, (err, createdStudent)=>{
     res.redirect('/students');
   });
 });
 
+//Show Route
+router.get('/:id', (req, res)=>{
+  console.log(req.params.id);
+  Student.findById(req.params.id, (err, foundStudent)=>{
+    console.log(foundStudent);
+    res.render('students/show.ejs', {
+      student: foundStudent
+    });
+  });
+});
 
 
 module.exports = router;

@@ -5,17 +5,22 @@
   </head>
   <body>
     <div class="container">
+
       <div class="col-xs-12">
         <h1>Student Profiles</h1>
       </div>
 
-    <!--- Student profile pics --->
-    <% for (let i = 0; i < students.length; i++){%>
-        <img src="<%=students[i].img%>"/>
+      <!--- Student profile pics --->
+      <div>
+          <% for (let i = 0; i < students.length; i++){%>
+              <img src="<%=students[i].img%>"/>
 
-      <h2>  <%=students[i].firstName%> <%=students[i].lastName%> </h2>
+            <p> <a href="students/<%=students[i].id%>">  <%=students[i].firstName%> <%=students[i].lastName%> </a> </p>
 
-    <%}%>
+          <%}%>
+      </div>
+      <a href="students/login">Sign In</a>
+      <a href="students/new">Sign Up</a>
 
     </div>
   </body>

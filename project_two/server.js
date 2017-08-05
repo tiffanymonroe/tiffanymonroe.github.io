@@ -20,7 +20,7 @@ app.use('/students', studentsController);
 //Index Route
 app.get('/', (req, res)=>{
   res.render('index.ejs')
-})
+});
 
 
 //Connections
