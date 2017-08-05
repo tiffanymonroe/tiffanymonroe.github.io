@@ -5,12 +5,17 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const Student = require('./controllers/students.js');
 
 //Middleware
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static ('public') );
 
+
+//controllers
+const studentsController = require('./controllers/students.js');
+app.use('/students', studentsController);
 
 //Index Route
 app.get('/', (req, res)=>{

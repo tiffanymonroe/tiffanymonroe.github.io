@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/head.ejs %>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-xs-12">
+        <h1>Student Profiles</h1>
+      </div>
+
+    <!--- Student profile pics --->
+    <% for (let i = 0; i < students.length; i++){%>
+        <img src="<%=students[i].img%>"/>
+
+      <h2>  <%=students[i].firstName%> <%=students[i].lastName%> </h2>
+
+    <%}%>
+
+    </div>
+  </body>
+</html>
