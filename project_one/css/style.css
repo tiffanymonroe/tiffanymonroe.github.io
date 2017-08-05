@@ -1,0 +1,232 @@
+body {
+  background-image: url('../img/StarburstsMCM.png');
+  background-size: cover;
+  background-position: center;
+  animation: zoom-in;
+  animation-duration: .5s;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+}
+
+
+.row-1 {
+  width: 90%;
+  height: 15%;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+
+.row-2 {
+  width: 90%;
+  height: 15%;
+  display: none;
+  margin: 0 auto;
+  margin-top: 3%;
+  align-self: center;
+  align-items: center;
+  vertical-align: top;
+  justify-content: space-around;
+  background-color: white;
+  border: 2px solid black;
+}
+
+.row-3 {
+  width: 90%;
+  height: 20%;
+  margin-top: 7%;
+}
+
+
+.row-4 {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 50%;
+  align-items: center;
+  display: flex;
+}
+
+h1, h2, h3 {
+  font-family: 'Slackey', cursive;
+}
+
+h1 {
+  text-shadow: 3px 3px 3px white;
+  animation-name: title;
+  animation-duration: 1s;
+}
+
+#start {
+  display: inline-block;
+  font-family: 'Cabin', sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: uppercase;
+  margin-left: 50%;
+  width: 10%;
+  height: 10vh;
+  text-align: center;
+}
+
+#categories {
+  width: 80%;
+}
+#categories button {
+  font-family: 'Slackey', cursive;
+  font-size: 100%;
+  padding: .5%;
+  height: 12vh;
+  width: 12vw;
+  margin: 1%;
+  flex-wrap: wrap;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: space-around;
+  background-color: white;
+  animation-name: slide-out;
+  animation-duration: 2s;
+}
+
+button:hover {
+  background-image: url('../img/button_background.png');
+  color: white;
+}
+
+
+
+.player1 {
+  width: 25%;
+  height: 10em;
+  align-self: center;
+  justify-content: flex-start;
+  display: inline-block;
+  font-family: 'Cabin', sans-serif;
+  border: 1px solid black;
+  padding: 1%;
+  background-color: white;
+}
+
+.player2 {
+  width: 25%;
+  height: 10em;
+  align-self:center;
+  justify-content: flex-end;
+  display: inline-block;
+  margin-left: 60%;
+  font-family: 'Cabin', sans-serif;
+  border: 1px solid black;
+  padding: 1%;
+  background-color: white;
+}
+
+input {
+  width: auto;
+  height: 2em;
+  font-family: 'Cabin', sans-serif;
+  font-size: 1em;
+  text-align: center;
+}
+
+.choices {
+  padding: 1%;
+  font-size: 1em;
+}
+.choices:hover {
+  font-size: 1.5em;
+  color: #008066;
+}
+
+#answer {
+  font-size: 1em;
+  display: none;
+}
+/* Media Queries */
+
+@media (max-width: 860px){
+  #categories button {
+    font-family: 'Cabin', sans-serif;
+    height: auto;
+    width: auto;
+  }
+
+  h2  {
+    font-family: 'Cabin', sans-serif;
+    font-size: 1em;
+  }
+
+  .row-1 {
+    font-size: 1em;
+    height: 10%;
+  }
+
+  input {
+    height: auto;
+    width: auto;
+    flex-flow: wrap;
+  }
+
+  .player1, .player2 {
+    width: 50%;
+    margin: auto;
+    margin-left: 0;
+    width: auto;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1170px){
+  #categories button{
+    font-family: 'Cabin', sans-serif;
+    font-weight: bold;
+  }
+}
+
+@keyframes zoom-in {
+  0% {background-size: 0%;}
+  25% {background-size: 25%;}
+  50% {background-size: 50%;}
+  75% {background-size: 75%;}
+  100% {background-size: cover;}
+
+}
+
+@keyframes title {
+  0% {display: inline-block;
+    transform: scale(.5);
+  }
+  10% {display: inline-block;
+    transform: scale(1);
+  }
+  20% {display: inline-block;
+    transform: scale(1.25);
+  }
+  30% {display: inline-block;
+    transform: scale(1.5);
+  }
+  40% {display: inline-block;
+    transform: scale(1.75);
+  }
+  50% {display: inline-block;
+    transform: scale(2);
+  }
+  60% {display: inline-block;
+    transform: scale(1.75);
+  }
+  70% {display: inline-block;
+    transform: scale(1.5);
+  }
+  100% {display: inline-block;
+    transform: scale(1.25);
+  }
+  100% {display: inline-block;
+    transform: scale(1);
+  }
+}
