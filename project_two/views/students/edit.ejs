@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title></title>
+    <% include ../partials/head.ejs %>
   </head>
   <body>
-    <h1>Edit Your Profile</h1>
-    profile form
+  <div class="container">
+    <div class="form-container col-xs-6 col-xs-offset-3">
+        <h1>Edit Your Profile</h1>
+        <form action="/students/<%=student._id%>?_method=PUT" method="post">
+          <div class="form-group">
+            <label for="img">Profile Picture</label>
+            <input type="text" class="form-control" name="img" placeholder="Image URL">
+          </div>
+          <div class="form-group">
+            <label for= "firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" placeholder="<%=student.firstName%>">
+          </div>
+          <div class="form-group">
+            <label for= "lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" placeholder="<%=student.lastName%>">
+          </div>
+          <div class="form-group">
+            <label for="year">Class Year</label>
+            <input type="text" class="form-control" name="year" placeholder="Freshman, Sophmore, Junior, Senior">
+          </div>
+          <div class="form-group">
+            <label for="about">About Me</label>
+            <input type="text" class="form-control" name="about" placeholder="Short bio.">
+          </div>
+          <div class="form-group">
+            <label for="course">Creative Writing</label>
+            <input type="text"class="form-control"  name="course" placeholder="Why you're taking Intro to Creative Writing.">
+          </div>
+          <div class="form-group">
+            <label for="genre">I'm most excited to write:</label>
+            <input type="text" class="form-control" name="genre" placeholder="(Ex. poetry, fiction)">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+  </div>
   </body>
 </html>

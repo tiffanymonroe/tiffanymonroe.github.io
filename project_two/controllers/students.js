@@ -27,18 +27,29 @@ router.post('/', (req, res)=>{
 //Show Route
 router.get('/:id', (req, res)=>{
   Student.findById(req.params.id, (err, foundStudent)=>{
+    console.log("error is: " + err);
     res.render('students/show.ejs', {
       student: foundStudent
     });
   });
 });
 
+
+
 //Edit Route
 router.get('/:id/edit', (req, res)=>{
   Student.findById(req.params.id, (err, foundStudent)=>{
+
     res.render('students/edit.ejs', {
       student: foundStudent
     });
+  });
+});
+
+//Update Route
+router.put('/:id', (req, res)=>{
+  Student.findByIdAndUpdate(req.params.id, req.body, ()=>{
+    res.redirect('/students');
   });
 });
 

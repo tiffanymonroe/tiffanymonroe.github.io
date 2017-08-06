@@ -15,7 +15,7 @@
           <% for (let i = 0; i < students.length; i++){%>
               <img src="<%=students[i].img%>"/>
 
-            <p> <a href="students/<%=students[i].id%>">  <%=students[i].firstName%> <%=students[i].lastName%> </a> </p>
+            <p> <a href="students/<%=students[i]._id%>">  <%=students[i].firstName%> <%=students[i].lastName%> </a> </p>
 
           <%}%>
       </div>
