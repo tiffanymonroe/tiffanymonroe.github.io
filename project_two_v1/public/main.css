@@ -1,0 +1,51 @@
+/** {
+  border: 1px solid hotpink;
+}*/
+
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-family: 'Give You Glory', cursive;
+}
+
+.hero {
+  position: absolute;
+  display: block;
+}
+.main-img > img {
+  width: 95%;
+  height: auto;
+  border-radius: 3px;
+}
+
+
+.menu > h4 {
+  text-align: center;
+  font-family: 'Give You Glory', cursive;
+  width: 100%;
+}
+
+.menu > section {
+  text-align: center;
+  vertical-align: bottom;
+}
+
+.menu {
+  text-align: center;
+  vertical-align: bottom;
+}
+
+
+/*.btn, a {
+  background-color: #41e2da;
+  border-color: #41e2da;
+  width: 75%;
+  margin-top: 10%;
+}
+
+.btn:hover {
+  background-color: #99E0DD;
+  border-color: #99E0DD;
+}*/
