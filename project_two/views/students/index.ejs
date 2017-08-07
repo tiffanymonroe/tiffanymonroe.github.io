@@ -4,16 +4,27 @@
     <% include ../partials/head.ejs %>
   </head>
   <body>
-    <h1>Student Index Page</h1>
-    <ul>
-      <li> Text works</li>
-				<% for(let i = 0; i < students.length; i++){ %>
-					<li>
-						<a href="/students/<%=students[i]._id%>">Text</a>
-					</li>
-				<% } %>
-        <li>Why doesn't ejs?</li>
-        <!--even tried copy/past Matt's code, but it still won't work-->
-			</ul>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 profiles">
+          <h1>Student Profiles</h1>
+        </div>
+      </div>
+        <!-- page of images linked to individual profiles -->
+
+        <ul>
+          <li> Text works</li>
+    				<% for(let i = 0; i < students.length; i++){ %>
+              <%=students[i]%>
+
+    					<li>
+    						<a href="/students/<%=students[i]._id%>">Text</a>
+    					</li>
+    				<% } %>
+            <li>Why doesn't ejs?</li>
+            <!--even tried copy/past Matt's code, but it still won't work-->
+    			</ul>
+      
+    </div>
   </body>
 </html>

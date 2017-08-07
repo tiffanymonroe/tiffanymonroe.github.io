@@ -61,4 +61,6 @@ router.post('/register', (req, res)=>{
   });
 });
 
+//must be logged in to see student profiles / Friday classroom
+
 module.exports = router;

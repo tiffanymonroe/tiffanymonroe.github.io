@@ -20,6 +20,8 @@ app.use(session({
 const studentsController = require('./controllers/students.js');
 app.use('/students', studentsController);
 
+const wikiController = require('./controllers/wiki.js');
+app.use('/wiki', wikiController);
 
 const sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);

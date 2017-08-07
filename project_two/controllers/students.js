@@ -28,6 +28,8 @@ router.get('/new', (req, res)=>{
 //Show Route
 router.get('/:id', (req, res)=>{
   Student.findById(req.params.id, (err, foundStudent)=>{
+    console.log("================================");
+    console.log(req.params.id);
     res.render('students/show.ejs', {
       student: foundStudent
     });
