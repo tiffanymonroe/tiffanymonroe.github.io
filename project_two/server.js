@@ -7,6 +7,7 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 
 //Middleware
+app.use(express.static('public'));
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(session({

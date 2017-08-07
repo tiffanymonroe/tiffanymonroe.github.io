@@ -19,7 +19,7 @@ router.post('/login', (req, res)=>{
   User.findOne({email: req.body.email}, (err, user)=>{
     if(user){
 
-      if(bcrypt.compareSynch(req.body.password, user.password)){
+      if(bcrypt.compareSync(req.body.password, user.password)){
         req.session.message = "";
         req.session.username = req.body.username;
         req.session.logged = true;
