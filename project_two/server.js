@@ -18,6 +18,8 @@ app.use(session({
 //Controllers
 const studentsController = require('./controllers/students.js');
 app.use('/students', studentsController);
+
+
 const sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
 
