@@ -5,13 +5,7 @@ const router = express.Router();
 
 //Index Route
 
-router.get('/', (req, res)=>{
-  Student.find({}, (err, foundStudents)=>{
-    res.render('students/index.ejs', {
-      students: foundStudents
-    });
-  });
-});
+
 
 router.post('/', (req, res)=>{
   Student.create(req.body, (err, createdStudent)=>{
